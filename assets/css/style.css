@@ -1223,3 +1223,10 @@ form .button-area {
   top: calc(100% - 12rem);
 }
 /* scroll top ends */
+
+
+@media (max-width: 650px)
+{ .home{
+    margin-top: 10vh;
+  }
+}
