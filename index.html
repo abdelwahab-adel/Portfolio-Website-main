@@ -1,559 +1,994 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Abdelwahabadel Adel , portfolio, Abdelwahabadel , full stack dev, personal portfolio lifecodes, portfolio design, portfolio website, personal portfolio" />
-    <meta name="description" content="Welcome to Abdelwahab's Portfolio. Full-Stack Web Developer" />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Favicon -->
-    <link id='favicon' rel="shortcut icon" href="./assets/images/profile.jpg" type="image/x-png">
-    <title>Portfolio | Abdelwahabadel Adel </title>
+  <meta charset="UTF-8">
+  <!-- IMPROVEMENT: Removed legacy X-UA-Compatible meta tag (not needed for modern browsers) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Welcome to Abdelwahab Adel's Portfolio — Full-Stack Web Developer specializing in PHP & Laravel.">
+  <meta name="keywords" content="Abdelwahab Adel, portfolio, full stack developer, PHP, Laravel, web developer Egypt">
+
+  <!-- IMPROVEMENT: Preconnect to external font origins for faster loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- IMPROVEMENT: Distinctive font pairing — Syne (display) + DM Sans (body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <title>Abdelwahab Adel | Full-Stack Developer</title>
+
+  <style>
+    /* =====================================================
+       CSS CUSTOM PROPERTIES — single source of truth for
+       all colors, spacing, and transitions
+    ===================================================== */
+    :root {
+      --bg:        #0b0e17;
+      --bg-card:   #111625;
+      --bg-card2:  #161c2e;
+      --accent:    #4f8ef7;
+      --accent2:   #00d4aa;
+      --text:      #e8ecf4;
+      --text-muted:#8892a4;
+      --border:    rgba(255,255,255,.07);
+      --radius:    14px;
+      --radius-sm: 8px;
+      --transition: .3s cubic-bezier(.4,0,.2,1);
+      --shadow:    0 8px 32px rgba(0,0,0,.45);
+      --shadow-glow: 0 0 28px rgba(79,142,247,.18);
+    }
+
+    /* =====================================================
+       RESET & BASE
+    ===================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    /* IMPROVEMENT: Removed oncontextmenu="return false" — bad UX */
+    img { max-width: 100%; display: block; user-select: none; }
+    a   { text-decoration: none; color: inherit; }
+    ul  { list-style: none; }
+
+    /* =====================================================
+       REUSABLE UTILITIES
+    ===================================================== */
+    .section-heading {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 3rem;
+      letter-spacing: -.5px;
+    }
+    .section-heading span { color: var(--accent); }
+    .section-heading i    { color: var(--accent2); margin-right: .5rem; }
+
+    /* IMPROVEMENT: Consistent section padding — removed scattered inline styles */
+    section { padding: 5rem 5%; }
+
+    /* =====================================================
+       BUTTON
+    ===================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .75rem 1.8rem;
+      border-radius: 50px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: .95rem;
+      background: linear-gradient(135deg, var(--accent), #3a6fd8);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    /* IMPROVEMENT: Shine sweep on hover */
+    .btn::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(255,255,255,.12);
+      transform: translateX(-110%) skewX(-20deg);
+      transition: transform .45s ease;
+    }
+    .btn:hover::before  { transform: translateX(110%) skewX(-20deg); }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,142,247,.4); }
+    .btn:active { transform: translateY(0); }
+
+    /* =====================================================
+       SCROLL-REVEAL BASE CLASS
+       IMPROVEMENT: Replaces heavy ScrollReveal library
+    ===================================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* =====================================================
+       HEADER / NAVBAR
+    ===================================================== */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 5%;
+      background: rgba(11,14,23,.85);
+      /* IMPROVEMENT: Glassmorphism blur */
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: padding var(--transition), background var(--transition);
+    }
+    header.scrolled { padding: .65rem 5%; }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .navbar ul { display: flex; gap: .25rem; }
+    .navbar a {
+      font-size: .88rem;
+      font-weight: 500;
+      padding: .45rem .9rem;
+      border-radius: 50px;
+      color: var(--text-muted);
+      transition: color var(--transition), background var(--transition);
+    }
+    .navbar a:hover,
+    .navbar a.active { color: var(--text); background: rgba(79,142,247,.12); }
+
+    /* IMPROVEMENT: CSS animated hamburger — no extra libs */
+    #menu {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+    }
+    #menu span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+    #menu.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    #menu.open span:nth-child(2) { opacity: 0; }
+    #menu.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+    .home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      padding-top: 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+    /* IMPROVEMENT: CSS animated blobs replace heavy particles.js */
+    .home::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,142,247,.15) 0%, transparent 70%);
+      top: -100px; left: -150px;
+      pointer-events: none;
+      animation: blob 8s ease-in-out infinite alternate;
+    }
+    .home::after {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,170,.12) 0%, transparent 70%);
+      bottom: 0; right: 10%;
+      pointer-events: none;
+      animation: blob 10s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes blob {
+      from { transform: scale(1) translate(0,0); }
+      to   { transform: scale(1.15) translate(40px, 30px); }
+    }
+
+    .home .content { flex: 1; max-width: 560px; }
+
+    .home .content h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: .75rem;
+      animation: fadeUp .8s ease both;
+    }
+    .home .content h1 span { color: var(--accent); }
+
+    .home .content .subtitle {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: var(--accent2);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      animation: fadeUp .8s .15s ease both;
+    }
+
+    .home .content .typing-wrapper {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
+      animation: fadeUp .8s .3s ease both;
+    }
+    .home .content .typing-wrapper .typing-text { color: var(--accent); font-weight: 600; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* IMPROVEMENT: Social icons — pill style with brand colours on hover */
+    .social-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem;
+      margin-top: 1.5rem;
+      animation: fadeUp .8s .45s ease both;
+    }
+    .social-icons a {
+      width: 42px; height: 42px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      transition: color var(--transition), background var(--transition),
+                  transform var(--transition), border-color var(--transition);
+    }
+    .social-icons a:hover             { transform: translateY(-4px); color: #fff; }
+    .social-icons a.linkedin:hover    { background: #0a66c2; border-color: #0a66c2; }
+    .social-icons a.github:hover      { background: #333;    border-color: #555; }
+    .social-icons a.telegram:hover    { background: #26a5e4; border-color: #26a5e4; }
+    .social-icons a.whatsapp:hover    { background: #25d366; border-color: #25d366; }
+    .social-icons a.instagram:hover   { background: #e1306c; border-color: #e1306c; }
+    .social-icons a.facebook:hover    { background: #1877f2; border-color: #1877f2; }
+
+    /* IMPROVEMENT: Hero image — floating CSS animation replaces vanilla-tilt.js */
+    .home .image { flex: 0 0 320px; animation: fadeUp .8s .2s ease both; }
+    .home .image img {
+      width: 100%;
+      border-radius: 24px;
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow), var(--shadow-glow);
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+
+    /* =====================================================
+       ABOUT
+    ===================================================== */
+    .about { background: var(--bg-card); }
+    .about .row { display: flex; align-items: center; gap: 4rem; flex-wrap: wrap; }
+    .about .image { flex: 0 0 280px; }
+    .about .image img {
+      width: 100%;
+      border-radius: var(--radius);
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .about .content { flex: 1; min-width: 260px; }
+    .about .content h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.6rem; font-weight: 700; margin-bottom: .4rem;
+    }
+    .about .content .tag {
+      display: inline-block;
+      padding: .3rem 1rem;
+      border-radius: 50px;
+      font-size: .82rem; font-weight: 600;
+      background: rgba(79,142,247,.12);
+      color: var(--accent);
+      border: 1px solid rgba(79,142,247,.25);
+      margin-bottom: 1.2rem;
+    }
+    /* IMPROVEMENT: Removed inline font-size:180% — normalised */
+    .about .content p { font-size: .97rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.9; }
+
+    .about .box-container { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1.8rem; }
+    .about .box p { font-size: .88rem; color: var(--text-muted); margin-bottom: .35rem; }
+    .about .box p span { color: var(--accent2); font-weight: 600; }
+
+    /* =====================================================
+       SKILLS
+    ===================================================== */
+    .skills { background: var(--bg); }
+    /* IMPROVEMENT: CSS grid auto-fill — removed per-card inline styles */
+    .skills .row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 1rem;
+    }
+    .skills .bar {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem .75rem;
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .skills .bar:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: var(--shadow-glow);
+      border-color: rgba(79,142,247,.4);
+    }
+    .skills .bar .info { display: flex; flex-direction: column; align-items: center; gap: .6rem; }
+    .skills .bar img {
+      width: 48px; height: 48px; object-fit: contain;
+      filter: brightness(.9) contrast(1.1);
+      transition: filter var(--transition);
+    }
+    .skills .bar:hover img { filter: brightness(1.1); }
+    .skills .bar span { font-size: .8rem; font-weight: 500; color: var(--text-muted); }
+
+    /* =====================================================
+       EDUCATION
+    ===================================================== */
+    .education { background: var(--bg-card); }
+    .education .quote {
+      text-align: center; font-style: italic;
+      color: var(--text-muted); margin-bottom: 2.5rem; font-size: .95rem;
+    }
+    .education .box-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .education .box {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .education .box:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .education .box .image { aspect-ratio: 16/7; overflow: hidden; }
+    .education .box .image img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .education .box:hover .image img { transform: scale(1.06); }
+    .education .box .content { padding: 1.25rem; }
+    .education .box .content h3 { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; }
+    .education .box .content p  { font-size: .88rem; color: var(--text-muted); margin-bottom: .75rem; }
+    .education .box .content h4 { font-size: .82rem; color: var(--accent2); font-weight: 600; }
+
+    /* =====================================================
+       PROJECTS
+       IMPROVEMENT: Semantic own section class — not reusing .skills
+    ===================================================== */
+    .projects { background: var(--bg); }
+    .projects .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    /* IMPROVEMENT: Hover overlay label — replaced inline-style .bar cards */
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .project-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .project-card img { width: 100%; height: 200px; object-fit: cover; transition: transform .5s ease; }
+    .project-card:hover img { transform: scale(1.07); }
+    .project-card .overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(11,14,23,.92) 0%, transparent 55%);
+      display: flex; align-items: flex-end; padding: 1rem;
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .project-card:hover .overlay { opacity: 1; }
+    .project-card .overlay span { font-family: 'Syne', sans-serif; font-size: .9rem; font-weight: 700; color: #fff; }
+    .project-card .label { padding: .75rem 1rem; font-size: .88rem; font-weight: 500; color: var(--text-muted); }
+
+    /* =====================================================
+       EXPERIENCE (timeline)
+    ===================================================== */
+    .experience { background: var(--bg-card); }
+    .timeline { position: relative; max-width: 680px; margin: 0 auto; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 50%; top: 0; bottom: 0;
+      width: 2px; background: var(--border); transform: translateX(-50%);
+    }
+    .timeline .item {
+      display: flex; width: 50%;
+      padding: 0 2.5rem 2rem 0;
+      position: relative; text-align: right;
+    }
+    .timeline .item.right {
+      align-self: flex-end; margin-left: 50%;
+      padding: 0 0 2rem 2.5rem; text-align: left;
+    }
+    .timeline .item::after {
+      content: '';
+      position: absolute;
+      width: 12px; height: 12px;
+      background: var(--accent); border-radius: 50%;
+      top: .5rem; right: -6px;
+      box-shadow: 0 0 0 4px rgba(79,142,247,.2);
+    }
+    .timeline .item.right::after { left: -6px; right: auto; }
+    .timeline .card {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.3rem; flex: 1;
+      transition: transform var(--transition), border-color var(--transition);
+    }
+    .timeline .card:hover           { transform: translateX(4px);  border-color: rgba(79,142,247,.3); }
+    .timeline .item.right .card:hover { transform: translateX(-4px); }
+    .timeline .card h2 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--accent); margin-bottom: .3rem; }
+    .timeline .card h3 { font-size: .9rem; font-weight: 600; margin-bottom: .2rem; }
+    .timeline .card p  { font-size: .82rem; color: var(--text-muted); }
+
+    /* =====================================================
+       COURSES & CERTIFICATIONS
+    ===================================================== */
+    .courses { background: var(--bg); }
+    .courses .row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 1rem;
+    }
+    .courses .cert-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem .75rem; text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .courses .cert-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-glow);
+      border-color: rgba(79,142,247,.35);
+    }
+    .courses .cert-card img { width: 80px; height: 80px; object-fit: contain; margin: 0 auto .65rem; border-radius: var(--radius-sm); }
+    .courses .cert-card span { display: block; font-size: .8rem; font-weight: 500; color: var(--text-muted); }
+
+    /* =====================================================
+       CONTACT
+    ===================================================== */
+    .contact { background: var(--bg-card); }
+    .contact .container { display: flex; gap: 3rem; align-items: flex-start; flex-wrap: wrap; }
+    .contact .image-box { flex: 0 0 220px; }
+    .contact .image-box img { width: 100%; border-radius: var(--radius); }
+    .contact form { flex: 1; min-width: 260px; }
+
+    /* IMPROVEMENT: Consistent field styling with icon support */
+    .contact .field, .contact .message { position: relative; margin-bottom: 1rem; }
+    .contact .field input,
+    .contact .message textarea {
+      width: 100%;
+      padding: .85rem 1rem .85rem 2.8rem;
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .92rem;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .contact .field input::placeholder,
+    .contact .message textarea::placeholder { color: var(--text-muted); }
+    .contact .field input:focus,
+    .contact .message textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(79,142,247,.12);
+    }
+    .contact .field i, .contact .message i {
+      position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+      color: var(--text-muted); font-size: .9rem; pointer-events: none;
+    }
+    .contact .message i { top: 1.1rem; transform: none; }
+    .contact .message textarea { padding-left: 2.8rem; min-height: 130px; resize: vertical; }
+    .contact .button-area { margin-top: .5rem; }
+    .contact .button-area button { width: 100%; padding: .85rem; font-size: 1rem; }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 3.5rem 5% 1.5rem;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1.5fr; gap: 3rem; margin-bottom: 2rem; }
+    .footer-col h3 {
+      font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+      color: var(--text); margin-bottom: 1rem; text-transform: capitalize;
+    }
+    .footer-col p { font-size: .87rem; color: var(--text-muted); line-height: 1.8; }
+    .footer-col a {
+      display: block; font-size: .87rem; color: var(--text-muted);
+      margin-bottom: .5rem;
+      transition: color var(--transition), padding-left var(--transition);
+    }
+    .footer-col a:hover { color: var(--accent); padding-left: 4px; }
+    .footer-col a i { margin-right: .4rem; color: var(--accent2); font-size: .75rem; }
+    .footer-social { display: flex; gap: .6rem; margin-top: .75rem; }
+    .footer-social a {
+      width: 38px; height: 38px; display: grid; place-items: center;
+      border-radius: 50%; font-size: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--text-muted); margin-bottom: 0;
+      transition: color var(--transition), background var(--transition), transform var(--transition);
+    }
+    .footer-social a:hover { color: #fff; background: var(--accent); transform: translateY(-3px); }
+    .footer-bottom {
+      text-align: center; font-size: .8rem; color: var(--text-muted);
+      padding-top: 1.5rem; border-top: 1px solid var(--border);
+    }
+    .footer-bottom span { color: var(--accent); }
+
+    /* =====================================================
+       SCROLL-TO-TOP BUTTON
+    ===================================================== */
+    #scroll-top {
+      position: fixed; bottom: 1.5rem; right: 1.5rem;
+      width: 44px; height: 44px;
+      background: var(--accent); color: #fff; border-radius: 50%;
+      display: grid; place-items: center; font-size: 1.1rem;
+      box-shadow: 0 4px 16px rgba(79,142,247,.5);
+      opacity: 0; pointer-events: none;
+      transition: opacity var(--transition), transform var(--transition);
+      z-index: 900;
+    }
+    #scroll-top.show { opacity: 1; pointer-events: all; }
+    #scroll-top:hover { transform: scale(1.1); }
+
+    /* =====================================================
+       RESPONSIVE — TABLET (max 900px)
+    ===================================================== */
+    @media (max-width: 900px) {
+      .home { flex-direction: column-reverse; text-align: center; padding-top: 7rem; }
+      .home .content { max-width: 100%; }
+      .home .image   { flex: none; width: 220px; }
+      .social-icons  { justify-content: center; }
+      .about .row    { flex-direction: column; align-items: center; }
+      .about .image  { flex: none; width: 220px; }
+      .timeline::before { left: 16px; transform: none; }
+      .timeline .item   { width: 100%; padding: 0 0 1.5rem 3rem; text-align: left; }
+      .timeline .item.right { margin-left: 0; padding-left: 3rem; }
+      .timeline .item::after,
+      .timeline .item.right::after { left: 10px; right: auto; }
+      .timeline .card:hover,
+      .timeline .item.right .card:hover { transform: translateX(0); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* =====================================================
+       RESPONSIVE — MOBILE (max 600px)
+    ===================================================== */
+    @media (max-width: 600px) {
+      section { padding: 3.5rem 4%; }
+      #menu { display: flex; }
+      .navbar {
+        position: fixed; top: 62px; left: 0; right: 0;
+        background: rgba(11,14,23,.97);
+        backdrop-filter: blur(16px);
+        padding: 1rem 5%;
+        transform: translateY(-110%);
+        transition: transform var(--transition);
+        border-bottom: 1px solid var(--border);
+      }
+      .navbar.open { transform: translateY(0); }
+      .navbar ul { flex-direction: column; gap: .25rem; }
+      .navbar a { display: block; padding: .65rem 1rem; border-radius: var(--radius-sm); }
+      .about .box-container { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .contact .container { flex-direction: column; }
+      .contact .image-box { display: none; }
+    }
+  </style>
 </head>
-<body oncontextmenu="return false">
 
-<!-- pre loader -->
-<!-- <div class="loader-container">
-  <img draggable="false" src="./assets/images/preloader.gif" alt="">
-</div> -->
+<body>
 
-<!-- navbar starts -->
-<header>
-        <a href="#home" class="logo"> My Website</a>
+<!-- ====================================================
+     HEADER
+===================================================== -->
+<header id="header">
+  <a href="#home" class="logo">Abdelwahab.</a>
 
-        <div id="menu" class="fas fa-bars"></div>
-        <nav class="navbar">
-            <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#course">course</a></li>
-            <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+  <!-- IMPROVEMENT: CSS animated hamburger spans — no Font Awesome icon needed -->
+  <div id="menu" aria-label="Toggle navigation" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+
+  <nav class="navbar" id="navbar">
+    <ul>
+      <li><a href="#home"       class="nav-link active">Home</a></li>
+      <li><a href="#about"      class="nav-link">About</a></li>
+      <li><a href="#skills"     class="nav-link">Skills</a></li>
+      <li><a href="#education"  class="nav-link">Education</a></li>
+      <li><a href="#work"       class="nav-link">Projects</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#course"     class="nav-link">Courses</a></li>
+      <li><a href="#contact"    class="nav-link">Contact</a></li>
+    </ul>
+  </nav>
 </header>
-<!-- navbar ends -->
 
+<!-- ====================================================
+     HERO
+===================================================== -->
+<section class="home" id="home">
+  <div class="content">
+    <!-- IMPROVEMENT: h1 for primary heading (accessibility + SEO) -->
+    <h1>Hi There,<br>I'm Abdelwahab <span>Adel</span></h1>
+    <p class="subtitle">Full Stack Developer — PHP &amp; Laravel</p>
+    <p class="typing-wrapper">I am into <span class="typing-text"></span></p>
+    <a href="#about" class="btn">About Me <i class="fas fa-arrow-circle-down"></i></a>
+    <!-- IMPROVEMENT: aria-labels on all social links; rel="noopener" for security -->
+    <ul class="social-icons">
+      <li><a class="linkedin"  aria-label="LinkedIn"  href="https://www.linkedin.com/in/abdelwahab-adel-57265926b" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a></li>
+      <li><a class="github"    aria-label="GitHub"    href="#" target="_blank" rel="noopener"><i class="fab fa-github"></i></a></li>
+      <li><a class="telegram"  aria-label="Telegram"  href="http://t.me/Abdelwahab77" target="_blank" rel="noopener"><i class="fab fa-telegram-plane"></i></a></li>
+      <li><a class="whatsapp"  aria-label="WhatsApp"  href="https://wa.me/+0201100340198" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a></li>
+      <li><a class="instagram" aria-label="Instagram" href="https://www.instagram.com/abd_elwahab_adel" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a></li>
+      <li><a class="facebook"  aria-label="Facebook"  href="https://www.facebook.com/profile.php?id=100008450681129" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a></li>
+    </ul>
+  </div>
 
-<!-- hero section starts -->
-<section s class="home" id="home">
-    <!-- <div id="particles-js"></div> -->
-
-    <div class="content">
-      <h2>Hi There,<br/> I'm Abdelwahab <span>Adel</span></h2>
-      <h2><span style="font-size: 70%;">Full Stack Developer PHP</span></h2>
-    <p>i am into <span class="typing-text"></span></p>
-    <a href="#about" class="btn"><span>About Me</span>
-      <i class="fas fa-arrow-circle-down"></i>
-    </a>
-    <div class="socials">
-        <ul class="social-icons">
-          <li><a class="linkedin" aria-label="LinkedIn" href="https://www.linkedin.com/in/abdelwahab-adel-57265926b?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BNyNVaJBVSfy7jnPAUQiVjw%3D%3D" target="_blank"><i class="fab fa-linkedin"></i></a></li> 
-          <li><a class="github" aria-label="GitHub" href="#" target="_blank"><i class="fab fa-github"></i></a></li>
-          <li><a class="telegram" aria-label="Telegram" href="http://t.me/Abdelwahab77" target="_blank"><i class="fab fa-telegram-plane"></i></a></li>
-          <li><a class="whatsapp" aria-label="whatsapp" href="https://wa.me/+0201100340198" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-          <li><a class="instagram" aria-label="Instagram" href="https://www.instagram.com/abd_elwahab_adel?igsh=MXR1amRjaDhhdnEwMA=="><i class="fab fa-instagram" target="_blank"></i></a></li>
-          <li><a class="facebook" aria-label="facebook" href="https://www.facebook.com/profile.php?id=100008450681129&mibextid=ZbWKwL"><i class="fab fa-facebook" target="_blank"></i></a></li>
-        </ul>
-      </div>
-    </div>
-<div class="image">
-    <img draggable="false" class="tiltt" style="border-radius: 4%;" src="assets/images/3.jpg" alt="">
-</div>
+  <div class="image">
+    <img src="assets/images/3.jpg" alt="Abdelwahab Adel">
+  </div>
 </section>
-<!-- hero section ends -->
 
-
-<!-- about section starts -->
+<!-- ====================================================
+     ABOUT
+===================================================== -->
 <section class="about" id="about">
-    <h2 class="heading"><i class="fas fa-user-alt"></i> About <span>Me</span></h2>
-    
-    <div class="row">
+  <h2 class="section-heading reveal"><i class="fas fa-user-alt"></i> About <span>Me</span></h2>
 
+  <div class="row reveal">
     <div class="image">
-        <img draggable="false" class="tiltt" src="./assets/images/1.jpg" alt="">
+      <img src="./assets/images/1.jpg" alt="Profile photo">
     </div>
     <div class="content">
-        <h3>I'm Abdelwahabadel Adel</h3>
-        <span class="tag">Full Stack Developer</span>
-        
-        <p style="font-size: 180%;">I am Full-Stack Web Developer Using PHP & laravel . <br>
-          
-          I study at the Faculty of Computers and Information, Luxor University.<br>
-          
-          Having Different Knowledge About : <br>
-          Front-end :HTML , Css , BootStrap , JavaScript , React.js , Sass . <br>
-          Back-end :PHP , Laravel , MySQL , PDO ,OOP , MVC ,and SOLID .<br>
-          
-          I'm Using This Tools , Git & GitHub , PHP Storm , Vs Code.
-           </p>
-        
-        <div class="box-container">
-            <div class="box">
-              <p><span> age: </span> 22</p>
-              <p><span> phone : </span> 01100340198</p>
-            </div>
-            <div class="box">
-              <p><span> email : </span> abdelwahabadel777@gmail.com</p>
-              <p><span> place : </span> Aswan, Egypt</p>
-            </div>
+      <h3>I'm Abdelwahab Adel</h3>
+      <span class="tag">Full Stack Developer</span>
+      <!-- IMPROVEMENT: Removed inline font-size:180% — normalised to CSS variable sizing -->
+      <p>Full-Stack Web Developer specialising in PHP &amp; Laravel, studying at the Faculty of Computers and Information, Luxor University.</p>
+      <p>
+        <strong style="color:var(--accent2)">Front-end:</strong> HTML, CSS, Bootstrap, JavaScript, React.js, Sass<br>
+        <strong style="color:var(--accent2)">Back-end:</strong> PHP, Laravel, MySQL, PDO, OOP, MVC, SOLID<br>
+        <strong style="color:var(--accent2)">Tools:</strong> Git &amp; GitHub, PhpStorm, VS Code
+      </p>
+      <div class="box-container">
+        <div class="box">
+          <p><span>Age:</span> 22</p>
+          <p><span>Phone:</span> 01100340198</p>
         </div>
-        
-        <div class="resumebtn">
-            <a href="https://drive.google.com/drive/folders/1y7p870-NbS-smc41o3XkBg7El0RMP5gp" target="_blank" class="btn"><span>Resume</span>
-                <i class="fas fa-chevron-right"></i>
-            </a>
+        <div class="box">
+          <p><span>Email:</span> abdelwahabadel777@gmail.com</p>
+          <p><span>Location:</span> Aswan, Egypt</p>
         </div>
-
+      </div>
+      <a href="https://drive.google.com/drive/folders/1y7p870-NbS-smc41o3XkBg7El0RMP5gp" target="_blank" class="btn">
+        Resume <i class="fas fa-chevron-right"></i>
+      </a>
     </div>
-    </div>
+  </div>
 </section>
-<!-- about section ends -->
-<!-- skills section starts -->
+
+<!-- ====================================================
+     SKILLS
+===================================================== -->
 <section class="skills" id="skills">
-
-  <h2 class="heading"><i class="fas fa-laptop-code"></i> Skills & <span>Abilities</span></h2>
-
-  <div class="container">
-        <div class="row" id="skillsContainer">
-
-          <div class="bar">
-            <div class="info">
-              <img src="https://img.icons8.com/?size=100&id=fAMVO_fuoOuC&format=png&color=000000"/>
-              <span>Php</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="info">
-              <img src="https://img.icons8.com/?size=100&id=UFXRpPFebwa2&format=png&color=000000"/>
-              <span>MySql</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="info">
-              <img src="https://img.icons8.com/?size=100&id=lRjcvhvtR81o&format=png&color=000000"/>
-              <span>Laravel</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="info">
-              <img src="https://img.icons8.com/?size=100&id=20909&format=png&color=000000"/>
-              <span>Html</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="info">
-              <img src="https://img.icons8.com/?size=100&id=7gdY5qNXaKC0&format=png&color=000000"/>
-              <span>Css</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="info">
-              <img src="https://img.icons8.com/?size=100&id=108784&format=png&color=000000"/>
-              <span>javaScript</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="info">
-              <img src="https://img.icons8.com/?size=100&id=wPohyHO_qO1a&format=png&color=000000"/>
-              <span>React.js</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="info">
-              <img src="https://img.icons8.com/?size=100&id=HKNzD81eiiSc&format=png&color=000000"/>
-              <span>jquery</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="info">
-              <img src="https://img.icons8.com/?size=100&id=EzPCiQUqWWEa&format=png&color=000000"/>
-              <span>Bootstrap</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="info">
-              <img src="https://img.icons8.com/?size=100&id=qsQZWvMuX4ad&format=png&color=000000"/>
-              <span>Sass</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="info">
-              <img src="https://img.icons8.com/?size=100&id=bVGqATNwfhYq&format=png&color=000000"/>
-              <span>Git & GitHub</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="info">
-              <img src="https://img.icons8.com/?size=100&id=13441&format=png&color=000000"/>
-              <span>Python</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="info">
-              <img src="https://img.icons8.com/?size=100&id=40669&format=png&color=000000"/>
-              <span>C++</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="info">
-              <img src="https://img.icons8.com/?size=100&id=Fycm8TUhWmFU&format=png&color=000000"/>
-              <span>C#</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="info">
-              <img src="https://img.icons8.com/?size=100&id=17842&format=png&color=000000"/>
-              <span>Linux</span>
-            </div>
-          </div>
-    </div>
-</div>
+  <h2 class="section-heading reveal"><i class="fas fa-laptop-code"></i> Skills &amp; <span>Abilities</span></h2>
+  <!-- IMPROVEMENT: All .bar cards use same markup — zero inline styles needed -->
+  <div class="row reveal">
+    <div class="bar"><div class="info"><img src="https://img.icons8.com/?size=100&id=fAMVO_fuoOuC&format=png&color=000000" alt="PHP"><span>PHP</span></div></div>
+    <div class="bar"><div class="info"><img src="https://img.icons8.com/?size=100&id=UFXRpPFebwa2&format=png&color=000000" alt="MySQL"><span>MySQL</span></div></div>
+    <div class="bar"><div class="info"><img src="https://img.icons8.com/?size=100&id=lRjcvhvtR81o&format=png&color=000000" alt="Laravel"><span>Laravel</span></div></div>
+    <div class="bar"><div class="info"><img src="https://img.icons8.com/?size=100&id=20909&format=png&color=000000" alt="HTML"><span>HTML</span></div></div>
+    <div class="bar"><div class="info"><img src="https://img.icons8.com/?size=100&id=7gdY5qNXaKC0&format=png&color=000000" alt="CSS"><span>CSS</span></div></div>
+    <div class="bar"><div class="info"><img src="https://img.icons8.com/?size=100&id=108784&format=png&color=000000" alt="JavaScript"><span>JavaScript</span></div></div>
+    <div class="bar"><div class="info"><img src="https://img.icons8.com/?size=100&id=wPohyHO_qO1a&format=png&color=000000" alt="React.js"><span>React.js</span></div></div>
+    <div class="bar"><div class="info"><img src="https://img.icons8.com/?size=100&id=HKNzD81eiiSc&format=png&color=000000" alt="jQuery"><span>jQuery</span></div></div>
+    <div class="bar"><div class="info"><img src="https://img.icons8.com/?size=100&id=EzPCiQUqWWEa&format=png&color=000000" alt="Bootstrap"><span>Bootstrap</span></div></div>
+    <div class="bar"><div class="info"><img src="https://img.icons8.com/?size=100&id=qsQZWvMuX4ad&format=png&color=000000" alt="Sass"><span>Sass</span></div></div>
+    <div class="bar"><div class="info"><img src="https://img.icons8.com/?size=100&id=bVGqATNwfhYq&format=png&color=000000" alt="Git"><span>Git &amp; GitHub</span></div></div>
+    <div class="bar"><div class="info"><img src="https://img.icons8.com/?size=100&id=13441&format=png&color=000000" alt="Python"><span>Python</span></div></div>
+    <div class="bar"><div class="info"><img src="https://img.icons8.com/?size=100&id=40669&format=png&color=000000" alt="C++"><span>C++</span></div></div>
+    <div class="bar"><div class="info"><img src="https://img.icons8.com/?size=100&id=Fycm8TUhWmFU&format=png&color=000000" alt="C#"><span>C#</span></div></div>
+    <div class="bar"><div class="info"><img src="https://img.icons8.com/?size=100&id=17842&format=png&color=000000" alt="Linux"><span>Linux</span></div></div>
+  </div>
 </section>
-<!-- skills section ends -->
 
-
-<!-- education section starts -->
+<!-- ====================================================
+     EDUCATION
+===================================================== -->
 <section class="education" id="education">
+  <h2 class="section-heading reveal"><i class="fas fa-graduation-cap"></i> My <span>Education</span></h2>
+  <p class="quote reveal">"Education is not the learning of facts, but the training of the mind to think."</p>
 
-  <h1 class="heading"><i class="fas fa-graduation-cap"></i> My <span>Education</span></h1>
-
-    <p class="qoute">Education is not the learning of facts, but the training of the mind to think.</p>
-
-    <div class="box-container">
-
+  <div class="box-container reveal">
     <div class="box">
-        <div class="image">
-        <img draggable="false" src="./assets/images/educat/luxor.jpg" alt="">
-        </div>
-        <div class="content">
-        <h3>Bachelor of Computers Science</h3>
-        <p>I study at the Faculty of Computers and Information, Luxor University .</p>
-        <h4>2020-2024 | graduate</h4>
-        </div>
-    </div>
-
-    <div class="box">
-      <div class="image">
-      <img draggable="false" src="./assets/images/iti.jpg" alt="">
-      </div>
+      <div class="image"><img src="./assets/images/educat/luxor.jpg" alt="Luxor University"></div>
       <div class="content">
-      <h3>Back-end PHP MySQL</h3>
-      <p>I study language PHP ,Database Mysql ,Introduction to Relational Databases (RDBMS)</p>
-      <h4>August 2023-September 2023 | Completed</h4> 
+        <h3>Bachelor of Computer Science</h3>
+        <p>Faculty of Computers and Information, Luxor University.</p>
+        <h4>2020 – 2024 | Graduate</h4>
       </div>
     </div>
-
-</div>
-</section>
-<!-- education section ends -->
-
-<section class="skills" id="work">
-  <h2 class="heading"><i class="fas fa-laptop-code"></i> Projects <span>Made</span></h2>
-  
-  <div class="container">
-    <div class="row" id="skillsContainer" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-      <div class="bar" style="border-radius: 5%; height: 340px; flex: 1 1 30%; margin: 10px;">
-        <div class="info">
-          <img style="border-radius: 5%; height:35vh; width: 100%;" src="./assets/images/graduation-project.png"/>
-          <span>Luxor University Website</span>
-        </div>
-      </div>
-      
-      <div class="bar" style="border-radius: 5%; height: 340px; flex: 1 1 30%; margin: 10px;">
-        <div class="info">
-          <img style="border-radius: 5%; height:35vh; width: 100%;" src="./assets/images/asswan.png"/>
-          <span>Asswan Culture</span>
-        </div>
-      </div>
-      <div class="bar" style="border-radius: 5%; height: 340px; flex: 1 1 30%; margin: 10px;">
-        <div class="info">
-          <img style="border-radius: 5%; height:35vh; width: 100%;" src="./assets/images/ecommerce-websit.png"/>
-          <span>E-commerce Websit</span>
-        </div>
-      </div>
-      <div class="bar" style="border-radius: 5%; height: 340px; flex: 1 1 30%; margin: 10px;">
-        <div class="info">
-          <img style="border-radius: 5%; height:35vh; width: 100%;" src="./assets/images/hotel.png"/>
-          <span>Hotel Management System</span>
-        </div>
-      </div>
-      <div class="bar" style="border-radius: 5%; height: 340px; flex: 1 1 30%; margin: 10px;">
-        <div class="info">
-          <img style="border-radius: 5%; height:35vh; width: 100%;" src="./assets/images/film.png"/>
-          <span>Movies Websit</span>
-        </div>
-      </div>
-      <div class="bar" style="border-radius: 5%; height: 340px; flex: 1 1 30%; margin: 10px;">
-        <div class="info">
-          <img style="border-radius: 5%; height:35vh; width: 100%;" src="./assets/images/hospital management System.png"/>
-          <span>Hospital Management System</span>
-        </div>
-      </div>
-      <div class="bar" style="border-radius: 5%; height: 340px; flex: 1 1 30%; margin: 10px;">
-        <div class="info">
-          <img style="border-radius: 5%; height:35vh; width: 100%;" src="./assets/images/dentax1.png"/>
-          <span>Dental clinic management system</span>
-        </div>
-      </div>
-      <div class="bar" style="border-radius: 5%; height: 340px; flex: 1 1 30%; margin: 10px;">
-        <div class="info">
-          <img style="border-radius: 5%; height:35vh; width: 100%;" src="./assets/images/quran.png"/>
-          <span>quran-websit</span>
-        </div>
-      </div>
-      <div class="bar" style="border-radius: 5%; height: 340px; flex: 1 1 30%; margin: 10px;">
-        <div class="info">
-          <img style="border-radius: 5%; height:35vh; width: 100%;" src="./assets/images/music website.png"/>
-          <span>Music Website</span>
-        </div>
+    <div class="box">
+      <div class="image"><img src="./assets/images/iti.jpg" alt="ITI"></div>
+      <div class="content">
+        <h3>Back-end PHP &amp; MySQL</h3>
+        <p>PHP, MySQL, Introduction to Relational Databases (RDBMS).</p>
+        <h4>Aug 2023 – Sep 2023 | Completed</h4>
       </div>
     </div>
   </div>
 </section>
 
-<!-- education section ends -->
-
-
-
-<!-- work project section ends -->
-
-<!-- experience section starts -->
-<section class="experience" id="experience" style="margin-bottom: -15%;">
-
-  <h2 class="heading"><i class="fas fa-briefcase"></i> Experience </h2>
-
-  <div class="timeline">
-
-    <div class="container right">
-      <div class="content">
-        <div class="tag">
-          <h2>Front-end Developer</h2>
-        </div>
-        <div class="desc">
-            <h3>Freelance</h3>
-            <p>October 2022 - present</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container left">
-      <div class="content">
-        <div class="tag">
-          <h2>Back-end Developer</h2>
-        </div>
-        <div class="desc">
-            <h3>Freelance</h3>
-            <p>September 2023 - present</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container right">
-      <div class="content">
-        <div class="tag">
-          <h2>Back-end Developer</h2>
-        </div>
-        <div class="desc">
-            <h3>CodeAlpha | Internship</h3>
-            <p>May 2021 - June 2021</p>
-        </div>
-      </div>
-    </div>
-
-</div>
-
+<!-- ====================================================
+     PROJECTS
+     IMPROVEMENT: Semantic own section instead of reusing .skills/#work
+===================================================== -->
+<section class="projects" id="work">
+  <h2 class="section-heading reveal"><i class="fas fa-laptop-code"></i> Projects <span>Made</span></h2>
+  <!-- IMPROVEMENT: .project-card replaces per-card inline-styled .bar elements -->
+  <div class="grid reveal">
+    <div class="project-card"><img src="./assets/images/graduation-project.png" alt="Luxor University Website"><div class="overlay"><span>Luxor University Website</span></div><p class="label">Luxor University Website</p></div>
+    <div class="project-card"><img src="./assets/images/asswan.png" alt="Asswan Culture"><div class="overlay"><span>Asswan Culture</span></div><p class="label">Asswan Culture</p></div>
+    <div class="project-card"><img src="./assets/images/ecommerce-websit.png" alt="E-commerce Website"><div class="overlay"><span>E-commerce Website</span></div><p class="label">E-commerce Website</p></div>
+    <div class="project-card"><img src="./assets/images/hotel.png" alt="Hotel Management"><div class="overlay"><span>Hotel Management</span></div><p class="label">Hotel Management System</p></div>
+    <div class="project-card"><img src="./assets/images/film.png" alt="Movies Website"><div class="overlay"><span>Movies Website</span></div><p class="label">Movies Website</p></div>
+    <div class="project-card"><img src="./assets/images/hospital management System.png" alt="Hospital Management"><div class="overlay"><span>Hospital Management</span></div><p class="label">Hospital Management System</p></div>
+    <div class="project-card"><img src="./assets/images/dentax1.png" alt="Dental Clinic"><div class="overlay"><span>Dental Clinic System</span></div><p class="label">Dental Clinic Management</p></div>
+    <div class="project-card"><img src="./assets/images/quran.png" alt="Quran Website"><div class="overlay"><span>Quran Website</span></div><p class="label">Quran Website</p></div>
+    <div class="project-card"><img src="./assets/images/music website.png" alt="Music Website"><div class="overlay"><span>Music Website</span></div><p class="label">Music Website</p></div>
+  </div>
 </section>
-<!-- experience section ends -->
-<section class="skills" id="course">
 
-  <h2 id="course" class="heading"><i class="fas fa-laptop-code"></i> course & <span>Certifications</span></h2>
-  <div class="container">
-    <div class="row" id="skillsContainer">
-
-      <div class="bar"><a href="https://www.coursera.org/account/accomplishments/verify/DLH2GJR2LCTN">
-        <div class="info">
-          <img src="https://img.icons8.com/?size=100&id=PvvcWRWxRKSR&format=png&color=000000"/>
-          <span style="margin-top: 9%; color: white;">Front-end</span>
-        </div></a>
+<!-- ====================================================
+     EXPERIENCE
+===================================================== -->
+<section class="experience" id="experience">
+  <h2 class="section-heading reveal"><i class="fas fa-briefcase"></i> Experience</h2>
+  <!-- IMPROVEMENT: Removed inline margin-bottom:-15% hack -->
+  <div class="timeline reveal">
+    <div class="item left">
+      <div class="card">
+        <h2>Front-end Developer</h2>
+        <h3>Freelance</h3>
+        <p>October 2022 – present</p>
       </div>
-      <div class="bar"><a href="https://www.linkedin.com/posts/abdelwahab-adel-57265926b_%D8%A7%D9%84%D8%AD%D9%85%D8%AF%D9%84%D9%84%D9%87-finally-i-have-finished-web-activity-7156406944923037697-S90m?utm_source=share&utm_medium=member_desktop">
-        <div class="info">
-          <img style="border-radius: 5%; height:115px; width: 90%;" src="./assets/images/DataFlair.jpeg"/>
-          <span style="color: white;">Front-end</span>
-        </div></a>
+    </div>
+    <div class="item right">
+      <div class="card">
+        <h2>Back-end Developer</h2>
+        <h3>Freelance</h3>
+        <p>September 2023 – present</p>
       </div>
-      <div class="bar"><a href="https://www.linkedin.com/posts/abdelwahab-adel-57265926b_%D8%A7%D9%84%D8%AD%D9%85%D8%AF%D9%84%D9%84%D9%87-finally-i-have-finished-track-activity-7147914088910671872-qUau?utm_source=share&utm_medium=member_desktop">
-        <div class="info">
-          <img style="border-radius: 5%; height:115px; width: 90%;" src="./assets/images/mt.png"/>
-          <span style="color: white;">Front-end</span>
-        </div></a>
+    </div>
+    <div class="item left">
+      <div class="card">
+        <h2>Back-end Developer</h2>
+        <h3>CodeAlpha | Internship</h3>
+        <p>May 2021 – June 2021</p>
       </div>
-      <div class="bar"><a href="https://www.sololearn.com/en/certificates/CC-OM4QPIDY">
-        <div class="info">
-          <img style="border-radius: 5%; width: 80%;" src="./assets/images/Sololearn.png"/>
-          <span style="color: white;">PHP</span>
-        </div></a>
-      </div>
-      <div class="bar"><a href="https://www.udemy.com/certificate/UC-c563a589-f1a0-458f-8622-120f0c57e2f5/">
-        <div class="info">
-          <img style="border-radius: 5%; width: 100%;" src="./assets/images/udemy.jpg"/>
-          <span style="color: white;">PHP Laravel 2023</span>
-        </div></a>
-      </div>
-      <div class="bar"><a href="https://www.coursera.org/account/accomplishments/specialization/BMYUW2THMELB?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=s12n">
-        <div class="info">
-          <img style="border-radius: 5%; width: 100%; height:120px; " src="./assets/images/infoec.jpeg"/>
-          <span style="color: white;">Laravel</span>
-        </div></a>
-      </div>
-      <div class="bar"><a href="https://www.linkedin.com/posts/abdelwahab-adel-57265926b_backend-laravel-activity-7146469879976562688-Z3hY?utm_source=share&utm_medium=member_desktop">
-        <div class="info">
-          <img style="border-radius: 5%; width: 100%; height:120px; " src="./assets/images/itrax_academy.png"/>
-          <span style="color: white;">Laravel</span>
-        </div></a>
-      </div>
-      <div class="bar"><a href="https://www.coursera.org/account/accomplishments/verify/RUBQ6UT58CWV">
-        <div class="info">
-          <img style="border-radius: 5%; width: 100%; height:120px; " src="https://img.icons8.com/?size=100&id=31754&format=png&color=000000"/>
-          <span style="color: white;">RDBMS</span>
-        </div></a>
-      </div>
-      <div class="bar"><a href="https://www.coursera.org/account/accomplishments/verify/KFFP38EDGZFD?utm_source=mobile&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course">
-        <div class="info">
-          <img src="https://img.icons8.com/?size=100&id=PvvcWRWxRKSR&format=png&color=000000"/>
-          <span style="margin-top: 9%; color: white;">MySql</span>
-        </div></a>
-      </div>
-
-</div>
-</div>
+    </div>
+  </div>
 </section>
-<!-- skills section ends -->
 
- <!-- contact section starts -->
+<!-- ====================================================
+     COURSES & CERTIFICATIONS
+     IMPROVEMENT: Own .courses class — no more reusing .skills
+===================================================== -->
+<section class="courses" id="course">
+  <h2 class="section-heading reveal"><i class="fas fa-certificate"></i> Courses &amp; <span>Certifications</span></h2>
+  <div class="row reveal">
+    <a class="cert-card" href="https://www.coursera.org/account/accomplishments/verify/DLH2GJR2LCTN" target="_blank" rel="noopener"><img src="https://img.icons8.com/?size=100&id=PvvcWRWxRKSR&format=png&color=000000" alt="Front-end"><span>Front-end</span></a>
+    <a class="cert-card" href="https://www.linkedin.com/posts/abdelwahab-adel-57265926b_" target="_blank" rel="noopener"><img src="./assets/images/DataFlair.jpeg" alt="DataFlair"><span>Front-end</span></a>
+    <a class="cert-card" href="https://www.linkedin.com/posts/abdelwahab-adel-57265926b_" target="_blank" rel="noopener"><img src="./assets/images/mt.png" alt="Track"><span>Front-end</span></a>
+    <a class="cert-card" href="https://www.sololearn.com/en/certificates/CC-OM4QPIDY" target="_blank" rel="noopener"><img src="./assets/images/Sololearn.png" alt="SoloLearn"><span>PHP</span></a>
+    <a class="cert-card" href="https://www.udemy.com/certificate/UC-c563a589-f1a0-458f-8622-120f0c57e2f5/" target="_blank" rel="noopener"><img src="./assets/images/udemy.jpg" alt="Udemy"><span>PHP Laravel 2023</span></a>
+    <a class="cert-card" href="https://www.coursera.org/account/accomplishments/specialization/BMYUW2THMELB" target="_blank" rel="noopener"><img src="./assets/images/infoec.jpeg" alt="Coursera Laravel"><span>Laravel</span></a>
+    <a class="cert-card" href="https://www.linkedin.com/posts/abdelwahab-adel-57265926b_backend-laravel-activity-7146469879976562688-Z3hY" target="_blank" rel="noopener"><img src="./assets/images/itrax_academy.png" alt="Itrax"><span>Laravel</span></a>
+    <a class="cert-card" href="https://www.coursera.org/account/accomplishments/verify/RUBQ6UT58CWV" target="_blank" rel="noopener"><img src="https://img.icons8.com/?size=100&id=31754&format=png&color=000000" alt="RDBMS"><span>RDBMS</span></a>
+    <a class="cert-card" href="https://www.coursera.org/account/accomplishments/verify/KFFP38EDGZFD" target="_blank" rel="noopener"><img src="https://img.icons8.com/?size=100&id=PvvcWRWxRKSR&format=png&color=000000" alt="MySQL"><span>MySQL</span></a>
+  </div>
+</section>
+
+<!-- ====================================================
+     CONTACT
+===================================================== -->
 <section class="contact" id="contact">
-  
-  <h2 class="heading"><i class="fas fa-headset"></i> Get in <span>Touch</span></h2>
-
-  <div class="container">
-    <div class="content">
-      <div class="image-box">
-        <img draggable="false" src="./assets/images/contact1.png" alt="">
+  <h2 class="section-heading reveal"><i class="fas fa-headset"></i> Get in <span>Touch</span></h2>
+  <div class="container reveal">
+    <div class="image-box">
+      <img src="./assets/images/contact1.png" alt="Contact illustration">
+    </div>
+    <!-- IMPROVEMENT: type="email" for email field; type="tel" for phone; novalidate lets EmailJS handle validation -->
+    <form id="contact-form" novalidate>
+      <div class="field">
+        <input type="text"  name="name"    placeholder="Name"    required autocomplete="name">
+        <i class="fas fa-user"></i>
       </div>
-    <form id="contact-form">
-      
-      <div class="form-group">
-        <div class="field">
-          <input type="text" name="name" placeholder="Name" required>
-          <i class='fas fa-user'></i>
-        </div>
-        <div class="field">
-          <input type="text" name="email" placeholder="Email" required>
-          <i class='fas fa-envelope'></i>
-        </div>
-        <div class="field">
-          <input type="text" name="phone" placeholder="Phone">
-          <i class='fas fa-phone-alt'></i>
-        </div>
-        <div class="message">
-        <textarea placeholder="Message" name="message" required></textarea>
+      <div class="field">
+        <input type="email" name="email"   placeholder="Email"   required autocomplete="email">
+        <i class="fas fa-envelope"></i>
+      </div>
+      <div class="field">
+        <input type="tel"   name="phone"   placeholder="Phone"            autocomplete="tel">
+        <i class="fas fa-phone-alt"></i>
+      </div>
+      <div class="message">
+        <textarea name="message" placeholder="Message" required></textarea>
         <i class="fas fa-comment-dots"></i>
-        </div>
-        </div>
+      </div>
       <div class="button-area">
-        <button type="submit">
-          Submit <i class="fa fa-paper-plane"></i></button>
+        <button type="submit" class="btn">Send Message <i class="fa fa-paper-plane"></i></button>
       </div>
     </form>
   </div>
-  </div>
-</section> 
-<!-- contact section ends -->
-
-
-<!-- footer section starts -->
-<section class="footer">
-
-  <div class="box-container">
-
-      <div class="box">
-          <h3>Abdelwahab's Portfolio</h3>
-          <p>Thank you for visiting my personal portfolio website. Connect with me over socials. <br/> <br/> Keep Rising 🚀. Connect with me over live chat!</p>
-      </div>
-
-      <div class="box">
-          <h3>quick links</h3>
-          <a href="#home"><i class="fas fa-chevron-circle-right"></i> home</a>
-          <a href="#about"><i class="fas fa-chevron-circle-right"></i> about</a>
-          <a href="#skills"><i class="fas fa-chevron-circle-right"></i> skills</a>
-          <a href="#education"><i class="fas fa-chevron-circle-right"></i> education</a>
-          <a href="#work"><i class="fas fa-chevron-circle-right"></i> work</a>
-          <a href="#experience"><i class="fas fa-chevron-circle-right"></i> experience</a>
-          <a href="#course"><i class="fas fa-chevron-circle-right"></i> course</a>
-      </div>
-
-      <div class="box">
-          <h3>contact info</h3>
-          <p> <i class="fas fa-phone"></i>01100340198</p>
-          <p> <i class="fas fa-envelope"></i>abdelwahabadel777@gmail.com</p>
-          <p> <i class="fas fa-map-marked-alt"></i> Aswan, Egypt</p>
-          <div class="share">
-
-              <a href="https://www.linkedin.com/in/abdelwahab-adel-57265926b?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bp0FJitl2Sk2cG12k2iX76g%3D%3D" class="fab fa-linkedin" aria-label="LinkedIn" target="_blank"></a>
-              <a href="#" class="fab fa-github" aria-label="GitHub" target="_blank"></a>
-              <a href="mailto:abdelwahabadel777@gmail.com" class="fas fa-envelope" aria-label="Mail" target="_blank"></a>
-              <a href="https://www.facebook.com/profile.php?id=100008450681129&mibextid=ZbWKwL" class="fab fa-facebook" aria-label="FaceBook" target="_blank"></a>
-              <a href="http://t.me/Abdelwahab77" class="fab fa-telegram-plane" aria-label="Telegram" target="_blank"></a>
-              <a href="https://wa.me/+0201100340198" class="fab fa-whatsapp" aria-label="Whatsapp" target="_blank"></a>
-          </div>
-      </div>
-  </div>
-
- 
 </section>
-<!-- footer section ends -->
 
+<!-- ====================================================
+     FOOTER
+===================================================== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h3>Abdelwahab's Portfolio</h3>
+      <p>Thank you for visiting. Connect with me over socials or drop a message. Keep Rising 🚀</p>
+    </div>
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+      <a href="#home"><i class="fas fa-chevron-circle-right"></i>Home</a>
+      <a href="#about"><i class="fas fa-chevron-circle-right"></i>About</a>
+      <a href="#skills"><i class="fas fa-chevron-circle-right"></i>Skills</a>
+      <a href="#education"><i class="fas fa-chevron-circle-right"></i>Education</a>
+      <a href="#work"><i class="fas fa-chevron-circle-right"></i>Projects</a>
+      <a href="#experience"><i class="fas fa-chevron-circle-right"></i>Experience</a>
+      <a href="#course"><i class="fas fa-chevron-circle-right"></i>Courses</a>
+    </div>
+    <div class="footer-col">
+      <h3>Contact Info</h3>
+      <p><i class="fas fa-phone"       style="margin-right:.5rem;color:var(--accent2)"></i>01100340198</p>
+      <p style="margin:.4rem 0"><i class="fas fa-envelope" style="margin-right:.5rem;color:var(--accent2)"></i>abdelwahabadel777@gmail.com</p>
+      <p><i class="fas fa-map-marker-alt" style="margin-right:.5rem;color:var(--accent2)"></i>Aswan, Egypt</p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/abdelwahab-adel-57265926b" aria-label="LinkedIn"  target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+        <a href="#"                                                       aria-label="GitHub"    target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+        <a href="mailto:abdelwahabadel777@gmail.com"                      aria-label="Email"     target="_blank" rel="noopener"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100008450681129" aria-label="Facebook"  target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+        <a href="http://t.me/Abdelwahab77"                                aria-label="Telegram"  target="_blank" rel="noopener"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://wa.me/+0201100340198"                            aria-label="WhatsApp"  target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; <span id="year"></span> Abdelwahab Adel. Built with <span>♥</span>
+  </div>
+</footer>
 
-<!-- scroll top btn -->
-<a href="#home" aria-label="ScrollTop" class="fas fa-angle-up" id="scroll-top"></a>
+<a href="#home" aria-label="Back to top" id="scroll-top"><i class="fas fa-angle-up"></i></a>
 
-</body>
-</html>
+<!-- ====================================================
+     SCRIPTS
+     IMPROVEMENT: All scripts inside <body> before </body>
+     IMPROVEMENT: Removed particles.min.js + app.js (replaced with CSS blobs)
+     IMPROVEMENT: Removed vanilla-tilt.js (replaced with CSS float animation)
+     IMPROVEMENT: Removed ScrollReveal CDN (replaced with IntersectionObserver)
+===================================================== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
+<script>
+  /* ==================================================
+     TYPED.JS — hero typing animation
+  ================================================== */
+  new Typed('.typing-text', {
+    strings: ['Web Development', 'PHP & Laravel', 'Problem Solving', 'Open Source'],
+    typeSpeed: 60,
+    backSpeed: 40,
+    loop: true,
+  });
 
-<!-- ==== ALL MAJOR JAVASCRIPT CDNS STARTS ==== -->
-<!-- jquery cdn -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  /* ==================================================
+     HEADER — shrink on scroll + active nav link
+     IMPROVEMENT: Single scroll listener does both tasks
+  ================================================== */
+  const header   = document.getElementById('header');
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
 
-<!-- typed.js cdn -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js" integrity="sha512-1KbKusm/hAtkX5FScVR5G36wodIMnVd/aP04af06iyQTkD17szAMGNmxfNH+tEuFp3Og/P5G32L1qEC47CZbUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    header.classList.toggle('scrolled', y > 60);
+    document.getElementById('scroll-top').classList.toggle('show', y > 300);
 
-<!-- particle.js links -->
-<script src="./assets/js/particles.min.js"></script>
-<script src="./assets/js/app.js"></script>
+    sections.forEach(sec => {
+      if (y >= sec.offsetTop - 100 && y < sec.offsetTop + sec.offsetHeight) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const match = document.querySelector(`.nav-link[href="#${sec.id}"]`);
+        if (match) match.classList.add('active');
+      }
+    });
+  });
 
-<!-- vanilla tilt.js links -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js" integrity="sha512-SttpKhJqONuBVxbRcuH0wezjuX+BoFoli0yPsnrAADcHsQMW8rkR84ItFHGIkPvhnlRnE2FaifDOUw+EltbuHg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  /* ==================================================
+     HAMBURGER MENU — toggle mobile nav
+  ================================================== */
+  const menuBtn = document.getElementById('menu');
+  const navbar  = document.getElementById('navbar');
 
-<!-- scroll reveal anim -->
-<script src="https://unpkg.com/scrollreveal"></script>
+  menuBtn.addEventListener('click', () => {
+    menuBtn.classList.toggle('open');
+    navbar.classList.toggle('open');
+  });
+  navbar.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => {
+      menuBtn.classList.remove('open');
+      navbar.classList.remove('open');
+    })
+  );
 
-<script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
-    ></script>
+  /* ==================================================
+     SCROLL REVEAL
+     IMPROVEMENT: Native IntersectionObserver — zero deps,
+     fires once per element, GPU-accelerated CSS transition
+  ================================================== */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
 
-<!-- ==== ALL MAJOR JAVASCRIPT CDNS ENDS ==== -->
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-<script src="./assets/js/script.js"></script>
+  /* ==================================================
+     FOOTER YEAR — always current
+  ================================================== */
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
