@@ -65,6 +65,7 @@ const statsObs = new IntersectionObserver(entries=>{
     animCount(document.getElementById('s2'),49,1200);
     animCount(document.getElementById('s3'),9,1100);
     animCount(document.getElementById('s4'),100,1400);
+    animCount(document.getElementById('s5'),5274,1200);
     statsObs.disconnect();
   }
 },{ threshold:.3 });
