@@ -1,462 +1,1164 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#07090f">
-  <meta name="description" content="Abdelwahab Adel — Full-Stack Developer specializing in PHP & Laravel. Portfolio showcasing projects, skills and experience.">
-  <title>Abdelwahab Adel · Full-Stack Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#020617">
+  <meta name="color-scheme" content="dark light">
 
+  <!-- Primary SEO -->
+  <title>Abdelwahab Adel · Full-Stack Developer — PHP & Laravel Specialist</title>
+  <meta name="description" content="Abdelwahab Adel — Full-Stack Developer specialising in PHP & Laravel. Portfolio of 49+ real-world projects, modern front-end engineering with React.js, and clean architecture.">
+  <meta name="keywords" content="Abdelwahab Adel, Full-Stack Developer, PHP, Laravel, React.js, MySQL, Portfolio, Web Development, Aswan, Egypt">
+  <meta name="author" content="Abdelwahab Adel">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://abdelwahab-adel.dev/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abdelwahab-adel.dev/">
+  <meta property="og:title" content="Abdelwahab Adel · Full-Stack Developer">
+  <meta property="og:description" content="Full-Stack Developer — PHP & Laravel. 49+ projects, clean code, beautiful UIs.">
+  <meta property="og:image" content="assets/images/3.jpg">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Abdelwahab Adel">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Abdelwahab Adel · Full-Stack Developer">
+  <meta name="twitter:description" content="Full-Stack Developer — PHP & Laravel. 49+ projects, clean code, beautiful UIs.">
+  <meta name="twitter:image" content="assets/images/3.jpg">
+
+  <!-- Performance hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://unpkg.com">
 
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
   <link rel="stylesheet" href="style.css">
+
+  <!-- Icons (deferred) -->
+  <script defer src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Abdelwahab Adel",
+    "jobTitle": "Full-Stack Developer",
+    "url": "https://abdelwahab-adel.dev/",
+    "image": "https://abdelwahab-adel.dev/assets/images/3.jpg",
+    "sameAs": [
+      "https://www.linkedin.com/in/abdelwahab-adel-57265926b",
+      "https://github.com/abdelwahab-adel/",
+      "https://www.facebook.com/profile.php?id=100008450681129",
+      "https://www.instagram.com/abd_elwahab_adel"
+    ],
+    "knowsAbout": ["PHP", "Laravel", "MySQL", "React.js", "JavaScript", "HTML5", "CSS3", "Sass", "Git", "Linux"],
+    "worksFor": {"@type": "Organization", "name": "Freelance"},
+    "alumniOf": {"@type": "CollegeOrUniversity", "name": "Luxor University"},
+    "address": {"@type": "PostalAddress", "addressLocality": "Aswan", "addressCountry": "EG"}
+  }
+  </script>
 </head>
 <body>
 
-<a href="#home" class="skip-link">Skip to content</a>
+  <!-- Skip link for keyboard users -->
+  <a href="#main" class="skip-link">Skip to main content</a>
 
-<!-- CURSOR -->
-<div id="cursor-dot" aria-hidden="true"></div>
-<div id="cursor-ring" aria-hidden="true"></div>
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
-<!-- ═══ HEADER ═══ -->
-<header id="header">
-  <a href="#home" class="logo-mark">Abdelwahab<span>.</span></a>
-  <div id="menu" aria-label="Toggle menu" aria-expanded="false" role="button" tabindex="0">
-    <span></span><span></span><span></span>
-  </div>
-  <nav id="navbar" aria-label="Main navigation">
-    <span class="nav-indicator" aria-hidden="true"></span>
-    <a href="#home"       class="nav-link active" aria-current="page">Home</a>
-    <a href="#about"      class="nav-link">About</a>
-    <a href="#skills"     class="nav-link">Skills</a>
-    <a href="#work"       class="nav-link">Projects</a>
-    <a href="#experience" class="nav-link">Experience</a>
-    <a href="#education"  class="nav-link">Education</a>
-    <a href="#course"     class="nav-link">Courses</a>
-    <a href="#contact"    class="nav-link">Contact</a>
-  </nav>
-  <div class="avail-badge"><div class="avail-dot"></div>Open to Work</div>
-</header>
-
-<!-- ═══ HERO ═══ -->
-<section class="hero" id="home">
-  <div class="orb-field" aria-hidden="true">
-    <span class="orb orb-blue"></span>
-    <span class="orb orb-violet"></span>
-    <span class="orb orb-cyan"></span>
-  </div>
-  <div class="hero-grid" aria-hidden="true"></div>
-
-  <div class="hero-content">
-    <div class="hero-eyebrow">Full-Stack Developer · Egypt</div>
-    <h1 class="hero-name">Abdelwahab<br><span class="grad-text">Adel</span></h1>
-    <p class="hero-role">Building things for the web —<br><span class="typed-wrap"><span class="typing-text"></span></span></p>
-    <p class="hero-desc">PHP &amp; Laravel specialist studying at Luxor University. I craft clean back-ends and beautiful front-ends that solve real problems.</p>
-    <div class="hero-ctas">
-      <a href="https://drive.google.com/drive/folders/1y7p870-NbS-smc41o3XkBg7El0RMP5gp" target="_blank" rel="noopener" class="btn-primary magnetic"><span>Download CV</span> <i class="fas fa-arrow-down"></i></a>
-      <a href="#contact" class="btn-secondary magnetic"><span>Let's Talk</span> <i class="fas fa-arrow-right"></i></a>
-    </div>
-    <div class="social-strip">
-      <a href="https://www.linkedin.com/in/abdelwahab-adel-57265926b" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-      <a href="http://t.me/Abdelwahab77" target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
-      <a href="https://wa.me/+0201100340198" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://www.instagram.com/abd_elwahab_adel" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.facebook.com/profile.php?id=100008450681129" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-    </div>
+  <!-- Aurora signature + glow blobs -->
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="fixed inset-0 pointer-events-none" style="z-index: 0; overflow: hidden;" aria-hidden="true">
+    <div class="blob blob-cyan animate-pulse-glow" style="top:-10rem; left:-10rem; width:500px; height:500px;"></div>
+    <div class="blob blob-purple blob-animate" style="top:35%; right:-10rem; width:480px; height:480px; animation-delay:-3s;"></div>
+    <div class="blob blob-pink blob-animate" style="bottom:-10rem; left:-5rem; width:440px; height:440px; animation-delay:-6s;"></div>
   </div>
 
-  <div class="hero-image-wrap">
-    <div class="orbit" aria-hidden="true"></div>
-    <div class="hero-img-frame">
-      <img src="assets/images/3.jpg" alt="Abdelwahab Adel" width="340" height="420">
-      <div class="hero-img-tag">
-        <div class="tag-num grad-text">5+</div>
-        <div class="tag-txt">Years<br>Coding</div>
+  <!-- Background grid -->
+  <div class="fixed inset-0 bg-grid pointer-events-none" style="z-index: 0;" aria-hidden="true"></div>
+
+  <!-- SVG gradients -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="cyan-purple-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#06b6d4"/>
+        <stop offset="100%" stop-color="#a855f7"/>
+      </linearGradient>
+      <linearGradient id="cyan-pink-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#06b6d4"/>
+        <stop offset="100%" stop-color="#ec4899"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- ════════════════ PRELOADER ════════════════ -->
+  <div id="preloader" class="preloader" aria-label="Loading portfolio">
+    <div style="position:relative;">
+      <div class="preloader-ring">
+        <img src="assets/images/3.jpg" alt="" loading="eager">
       </div>
-      <div class="hero-img-tag2"><i class="fas fa-bolt"></i> PHP &amp; Laravel</div>
+      <div class="preloader-ping" aria-hidden="true"></div>
     </div>
+    <h2>ABDELWAHAB</h2>
+    <p>Loading Portfolio</p>
   </div>
 
-  <div class="scroll-hint">Scroll</div>
-</section>
+  <!-- ════════════════ HEADER ════════════════ -->
+  <header id="header" class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="logo" aria-label="Abdelwahab Adel — home">
+        <span class="text-gradient">ABDELWAHAB</span><span style="color:var(--text-mid);font-weight:400">.</span>
+      </a>
 
-<!-- ═══ STATS ═══ -->
-<div class="stats-bar sr up" id="stats">
-  <div class="stat-item">
-    <div class="stat-num"><span id="s1">0</span><sup>+</sup></div>
-    <div class="stat-lbl">Years Experience</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num"><span id="s2">0</span></div>
-    <div class="stat-lbl">Projects Built</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num"><span id="s3">0</span><sup>+</sup></div>
-    <div class="stat-lbl">Certifications</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num"><span id="s4">0</span><sup>%</sup></div>
-    <div class="stat-lbl">Client Satisfaction</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num"><span id="s5">0</span><sup>+</sup></div>
-    <div class="stat-lbl">Cups of Coffee</div>
-  </div>
-</div>
+      <nav class="nav-desktop glass-soft" aria-label="Primary">
+        <a href="#home"        class="nav-link active">Home</a>
+        <a href="#about"       class="nav-link">About</a>
+        <a href="#skills"      class="nav-link">Skills</a>
+        <a href="#projects"    class="nav-link">Projects</a>
+        <a href="#experience"  class="nav-link">Experience</a>
+        <a href="#education"   class="nav-link">Education</a>
+        <a href="#services"    class="nav-link">Services</a>
+        <a href="#contact"     class="nav-link">Contact</a>
+      </nav>
 
-<!-- ═══ ABOUT ═══ -->
-<section id="about" class="alt">
-  <div class="s-label">Who I am</div>
-  <h2 class="s-title sr up">About <span class="grad-text">Me</span></h2>
-  <div class="about-grid">
-    <div class="about-img-wrap sr lft">
-      <img src="./assets/images/1.jpg" alt="Abdelwahab Adel profile" loading="lazy">
-      <div class="about-img-badge">Full-Stack Developer<br>Egypt 🇪🇬</div>
-    </div>
-    <div class="about-text sr rgt">
-      <p>I'm <strong>Abdelwahab Adel</strong>, a Full-Stack Developer with a passion for building elegant, performant web applications. Currently finishing my degree in Computer Science at Luxor University.</p>
-      <p>I specialise in <strong>PHP & Laravel</strong> on the back-end and bring designs to life with modern front-end technologies like <strong>React.js</strong> and <strong>Sass</strong>. I care deeply about clean code, good architecture, and user experience.</p>
-      <div class="about-facts">
-        <div class="fact-item"><div class="fact-label">Age</div><div class="fact-val">23</div></div>
-        <div class="fact-item"><div class="fact-label">Location</div><div class="fact-val">Aswan, Egypt</div></div>
-        <div class="fact-item"><div class="fact-label">Phone</div><div class="fact-val">01100340198</div></div>
-        <div class="fact-item"><div class="fact-label">Email</div><div class="fact-val" style="font-size:.78rem">abdelwahabadel777@gmail.com</div></div>
-      </div>
-      <a href="https://drive.google.com/drive/folders/1y7p870-NbS-smc41o3XkBg7El0RMP5gp" target="_blank" rel="noopener" class="btn-primary btn-sm magnetic"><span>View Resume</span> <i class="fas fa-external-link-alt"></i></a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ SKILLS ═══ -->
-<section id="skills">
-  <div class="s-label">What I work with</div>
-  <h2 class="s-title sr up">Skills &amp; <span class="grad-text">Tech</span></h2>
-  <div class="skills-intro">
-    <div class="skills-cloud sr lft">
-      <div class="skill-pill featured"><img src="https://img.icons8.com/?size=100&id=fAMVO_fuoOuC&format=png&color=000000" alt="PHP" loading="lazy">PHP</div>
-      <div class="skill-pill featured"><img src="https://img.icons8.com/?size=100&id=lRjcvhvtR81o&format=png&color=000000" alt="Laravel" loading="lazy">Laravel</div>
-      <div class="skill-pill featured"><img src="https://img.icons8.com/?size=100&id=UFXRpPFebwa2&format=png&color=000000" alt="MySQL" loading="lazy">MySQL</div>
-      <div class="skill-pill"><img src="https://img.icons8.com/?size=100&id=20909&format=png&color=000000" alt="HTML" loading="lazy">HTML5</div>
-      <div class="skill-pill"><img src="https://img.icons8.com/?size=100&id=7gdY5qNXaKC0&format=png&color=000000" alt="CSS" loading="lazy">CSS3</div>
-      <div class="skill-pill"><img src="https://img.icons8.com/?size=100&id=108784&format=png&color=000000" alt="JS" loading="lazy">JavaScript</div>
-      <div class="skill-pill"><img src="https://img.icons8.com/?size=100&id=wPohyHO_qO1a&format=png&color=000000" alt="React" loading="lazy">React.js</div>
-      <div class="skill-pill"><img src="https://img.icons8.com/?size=100&id=EzPCiQUqWWEa&format=png&color=000000" alt="Bootstrap" loading="lazy">Bootstrap</div>
-      <div class="skill-pill"><img src="https://img.icons8.com/?size=100&id=qsQZWvMuX4ad&format=png&color=000000" alt="Sass" loading="lazy">Sass</div>
-      <div class="skill-pill"><img src="https://img.icons8.com/?size=100&id=HKNzD81eiiSc&format=png&color=000000" alt="jQuery" loading="lazy">jQuery</div>
-      <div class="skill-pill"><img src="https://img.icons8.com/?size=100&id=bVGqATNwfhYq&format=png&color=000000" alt="Git" loading="lazy">Git</div>
-      <div class="skill-pill"><img src="https://img.icons8.com/?size=100&id=13441&format=png&color=000000" alt="Python" loading="lazy">Python</div>
-      <div class="skill-pill"><img src="https://img.icons8.com/?size=100&id=40669&format=png&color=000000" alt="C++" loading="lazy">C++</div>
-      <div class="skill-pill"><img src="https://img.icons8.com/?size=100&id=Fycm8TUhWmFU&format=png&color=000000" alt="C#" loading="lazy">C#</div>
-      <div class="skill-pill"><img src="https://img.icons8.com/?size=100&id=17842&format=png&color=000000" alt="Linux" loading="lazy">Linux</div>
-    </div>
-    <div class="prof-bars sr rgt">
-      <div class="prof-item">
-        <div class="prof-top"><span class="prof-name">PHP &amp; Laravel</span><span class="prof-pct">92%</span></div>
-        <div class="prof-track"><div class="prof-fill" data-w="92%"></div></div>
-      </div>
-      <div class="prof-item">
-        <div class="prof-top"><span class="prof-name">MySQL / Databases</span><span class="prof-pct">88%</span></div>
-        <div class="prof-track"><div class="prof-fill" data-w="88%"></div></div>
-      </div>
-      <div class="prof-item">
-        <div class="prof-top"><span class="prof-name">HTML / CSS / Sass</span><span class="prof-pct">95%</span></div>
-        <div class="prof-track"><div class="prof-fill" data-w="95%"></div></div>
-      </div>
-      <div class="prof-item">
-        <div class="prof-top"><span class="prof-name">JavaScript / React</span><span class="prof-pct">80%</span></div>
-        <div class="prof-track"><div class="prof-fill" data-w="80%"></div></div>
-      </div>
-      <div class="prof-item">
-        <div class="prof-top"><span class="prof-name">Git &amp; GitHub</span><span class="prof-pct">85%</span></div>
-        <div class="prof-track"><div class="prof-fill" data-w="85%"></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PROJECTS ═══ -->
-<section id="work" class="alt">
-  <div class="s-label">Selected Work</div>
-  <h2 class="s-title sr up">Projects <span class="grad-text">Made</span></h2>
-  <div class="proj-grid">
-
-    <div class="proj-card sr up">
-      <div class="proj-thumb"><img class="proj-img" src="./assets/images/projects/graduation-project.png" alt="Luxor University Website" loading="lazy"></div>
-      <div class="proj-body">
-        <div class="proj-tags"><span class="proj-tag">Laravel</span><span class="proj-tag">PHP</span></div>
-        <div class="proj-name">Luxor University Website</div>
-        <div class="proj-desc">Full faculty portal with student management, news, and dynamic content systems.</div>
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-switch" aria-label="Toggle theme">
+          <span class="theme-switch-thumb" aria-hidden="true"></span>
+        </button>
+        <a href="https://drive.google.com/drive/folders/1y7p870-NbS-smc41o3XkBg7El0RMP5gp" target="_blank" rel="noopener" class="btn btn-ghost magnetic" style="display:none">
+          <i data-lucide="download" class="icon" aria-hidden="true"></i><span>CV</span>
+        </a>
+        <button id="menu-btn" class="menu-btn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-nav">
+          <i data-lucide="menu" id="menu-icon" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
 
-    <div class="proj-card sr up" style="transition-delay:.08s">
-      <div class="proj-thumb"><img class="proj-img" src="./assets/images/projects/asswan.png" alt="Asswan Culture" loading="lazy"></div>
-      <div class="proj-body">
-        <div class="proj-tags"><span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span class="proj-tag">JS</span></div>
-        <div class="proj-name">Asswan Culture</div>
-        <div class="proj-desc">A cultural showcase for Aswan city — history, tourism, and local heritage.</div>
-      </div>
-    </div>
+    <!-- Mobile nav -->
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile">
+      <a href="#home"       class="nav-link">Home</a>
+      <a href="#about"      class="nav-link">About</a>
+      <a href="#skills"     class="nav-link">Skills</a>
+      <a href="#projects"   class="nav-link">Projects</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#education"  class="nav-link">Education</a>
+      <a href="#services"   class="nav-link">Services</a>
+      <a href="#contact"    class="nav-link">Contact</a>
+    </nav>
+  </header>
 
-    <div class="proj-card sr up" style="transition-delay:.16s">
-      <div class="proj-thumb"><img class="proj-img" src="./assets/images/projects/Screenshot 2026-05-27 224803.png" alt="KATO" loading="lazy"></div>
-      <div class="proj-body">
-        <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">API</span><span class="proj-tag">JS</span></div>
-        <div class="proj-name">KATO — Integrated Service Center</div>
-        <div class="proj-desc">A website for the Maintenance and Finishing Center - Electrical, Plumbing, Air Conditioning and Home Services with a bilingual interface.</div>
-      </div>
-    </div>
+  <main id="main">
 
-    <div class="proj-card sr up" style="transition-delay:.16s">
-      <div class="proj-thumb"><img class="proj-img" src="./assets/images/projects/Screenshot 2026-05-27 224744.png" alt="Rayyan" loading="lazy"></div>
-      <div class="proj-body">
-        <div class="proj-tags"><span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span class="proj-tag">JS</span></div>
-        <div class="proj-name">Al Rayyan Store</div>
-        <div class="proj-desc">An online store for the Saudi market - product categories and shopping cart with the possibility of completing the order via WhatsApp.</div>
-      </div>
-    </div>
+    <!-- ════════════════ HERO ════════════════ -->
+    <section id="home" class="hero section" aria-label="Hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-text reveal reveal-left">
+            <span class="eyebrow"><span class="dot"></span> Open to Work · Full-Stack Developer</span>
+            <h1 class="hero-headline">
+              Hi, I'm <span class="text-gradient">Abdelwahab</span>
+              <span class="small-line">I build <span id="typing-text" class="typed typing-cursor"></span></span>
+            </h1>
+            <p style="font-size:var(--fs-lg); color:var(--text-mid); max-width:38rem; margin:0 auto; line-height:var(--lh-relaxed);">
+              PHP &amp; Laravel specialist studying at Luxor University. I craft clean back-ends and beautiful front-ends that solve real problems.
+            </p>
 
-    <div class="proj-card sr up" style="transition-delay:.16s">
-      <div class="proj-thumb"><img class="proj-img" src="./assets/images/projects/ecommerce-websit.png" alt="E-Commerce" loading="lazy"></div>
-      <div class="proj-body">
-        <div class="proj-tags"><span class="proj-tag">Laravel</span><span class="proj-tag">MySQL</span></div>
-        <div class="proj-name">E-Commerce Platform</div>
-        <div class="proj-desc">Full-featured shop with cart, orders, admin panel, and payment integration.</div>
-      </div>
-    </div>
+            <div class="hero-cta">
+              <a href="https://drive.google.com/drive/folders/1y7p870-NbS-smc41o3XkBg7El0RMP5gp" target="_blank" rel="noopener" class="btn btn-primary magnetic">
+                <i data-lucide="download" class="icon" aria-hidden="true"></i> Download CV
+              </a>
+              <a href="#contact" class="btn btn-ghost magnetic">
+                Let's Talk <i data-lucide="arrow-right" class="icon" aria-hidden="true"></i>
+              </a>
+            </div>
 
-    <div class="proj-card sr up" style="transition-delay:.12s">
-      <div class="proj-thumb"><img class="proj-img" src="./assets/images/projects/film.png" alt="Movies Website" loading="lazy"></div>
-      <div class="proj-body">
-        <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">API</span></div>
-        <div class="proj-name">Movies Website</div>
-        <div class="proj-desc">Browse and search movies via API with dynamic rendering and React hooks.</div>
-      </div>
-    </div>
+            <div class="hero-socials" aria-label="Social links">
+              <span class="label">Follow me:</span>
+              <a href="https://www.linkedin.com/in/abdelwahab-adel-57265926b" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+              <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/profile.php?id=100008450681129" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+              <a href="https://wa.me/+0201100340198" target="_blank" rel="noopener" class="social-icon" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+              <a href="http://t.me/Abdelwahab77" target="_blank" rel="noopener" class="social-icon" aria-label="Telegram"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a>
+              <a href="https://www.instagram.com/abd_elwahab_adel" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            </div>
+          </div>
 
-    <div class="proj-card sr up" style="transition-delay:.2s">
-      <div class="proj-thumb"><img class="proj-img" src="./assets/images/projects/hospital management System.png" alt="Hospital" loading="lazy"></div>
-      <div class="proj-body">
-        <div class="proj-tags"><span class="proj-tag">Laravel</span><span class="proj-tag">MySQL</span></div>
-        <div class="proj-name">Hospital Management</div>
-        <div class="proj-desc">Patient records, appointments, doctor management and analytics.</div>
-      </div>
-    </div>
-
-    <div class="proj-card sr up">
-      <div class="proj-thumb"><img class="proj-img" src="./assets/images/dentax1.png" alt="Dental Clinic" loading="lazy"></div>
-      <div class="proj-body">
-        <div class="proj-tags"><span class="proj-tag">PHP</span><span class="proj-tag">Bootstrap</span></div>
-        <div class="proj-name">Dental Clinic System</div>
-        <div class="proj-desc">Patient scheduling, treatment history, and billing for dental clinics.</div>
-      </div>
-    </div>
-
-    <div class="proj-card sr up" style="transition-delay:.08s">
-      <div class="proj-thumb"><img class="proj-img" src="./assets/images/projects/quran.png" alt="Quran" loading="lazy"></div>
-      <div class="proj-body">
-        <div class="proj-tags"><span class="proj-tag">JavaScript</span><span class="proj-tag">API</span></div>
-        <div class="proj-name">Quran Website</div>
-        <div class="proj-desc">Browse surahs and ayahs with audio recitation and search capability.</div>
-      </div>
-    </div>
-
-    <div class="proj-card sr up" style="transition-delay:.16s">
-      <div class="proj-thumb"><img class="proj-img" src="./assets/images/projects/music website.png" alt="Music" loading="lazy"></div>
-      <div class="proj-body">
-        <div class="proj-tags"><span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span class="proj-tag">JS</span></div>
-        <div class="proj-name">Music Website</div>
-        <div class="proj-desc">Music player with playlist management and a custom audio interface.</div>
-      </div>
-    </div>
-
-    <div class="proj-card sr up" style="transition-delay:.16s">
-      <div class="proj-thumb"><img class="proj-img" src="./assets/images/projects/Screenshot 2026-05-27 224726.png" alt="Golden" loading="lazy"></div>
-      <div class="proj-body">
-        <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">API</span><span class="proj-tag">AI</span></div>
-        <div class="proj-name">Egypt Golden Platform</div>
-        <div class="proj-desc">Live gold, bullion and currency price platform - AI-powered smart analysis, gold portfolio and real-time market indicators.</div>
-      </div>
-    </div>
-
-    <!-- ══ NEW PROJECTS ══ -->
-
-  </div>
-</section>
-
-<!-- ═══ EXPERIENCE ═══ -->
-<section id="experience">
-  <div class="s-label">Career Path</div>
-  <h2 class="s-title sr up"><span class="grad-text">Work</span> Experience</h2>
-  <div class="timeline-wrap">
-    <div class="tl-item sr up">
-      <div class="tl-date">Oct 2022<br>— Present</div>
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <div class="tl-title">Front-End Developer</div>
-        <div class="tl-sub">Freelance</div>
-        <div class="tl-desc">Building responsive, accessible websites and web apps for clients. Specialising in modern CSS, JavaScript, and React-based UIs.</div>
-      </div>
-    </div>
-    <div class="tl-item sr up" style="transition-delay:.1s">
-      <div class="tl-date">Sep 2023<br>— Present</div>
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <div class="tl-title">Back-End Developer</div>
-        <div class="tl-sub">Freelance</div>
-        <div class="tl-desc">Designing and implementing PHP/Laravel APIs, database schemas, and admin systems for small-to-medium businesses.</div>
-      </div>
-    </div>
-    <div class="tl-item sr up" style="transition-delay:.2s">
-      <div class="tl-date">May 2021<br>— Jun 2021</div>
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <div class="tl-title">Back-End Developer — Internship</div>
-        <div class="tl-sub">CodeAlpha</div>
-        <div class="tl-desc">Built backend modules, worked with team workflows, code reviews and learned industry best practices.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ EDUCATION ═══ -->
-<section id="education" class="alt">
-  <div class="s-label">Academic Background</div>
-  <h2 class="s-title sr up">My <span class="grad-text">Education</span></h2>
-  <div class="timeline-wrap">
-    <div class="tl-item sr up">
-      <div class="tl-date">2020<br>— 2024</div>
-      <div class="tl-dot"></div>
-      <div class="tl-card has-media">
-        <div class="tl-thumb"><img src="./assets/images/educat/luxor.jpg" alt="Luxor University campus" loading="lazy"></div>
-        <div class="tl-body">
-          <div class="tl-title">Bachelor of Computer Science</div>
-          <div class="tl-sub">Faculty of Computers &amp; Information · Luxor University</div>
-          <div class="tl-desc">Studied algorithms, data structures, databases, operating systems, software engineering, and web development. Graduated successfully.</div>
+          <div class="hero-portrait reveal reveal-right">
+            <div class="portrait-frame" aria-hidden="true"></div>
+            <div class="portrait-img">
+              <img src="assets/images/3.jpg" alt="Abdelwahab Adel — Full-Stack Developer" loading="eager" width="440" height="440">
+            </div>
+            <div class="portrait-badge b1 float-rev" aria-hidden="true"><i data-lucide="code-2"></i></div>
+            <div class="portrait-badge b2 float-slow" aria-hidden="true" style="animation-delay:-2s"><i data-lucide="database"></i></div>
+            <div class="portrait-badge b3 float-rev" aria-hidden="true" style="animation-delay:-4s"><i data-lucide="sparkles"></i></div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="tl-item sr up" style="transition-delay:.12s">
-      <div class="tl-date">Aug 2023<br>— Sep 2023</div>
-      <div class="tl-dot"></div>
-      <div class="tl-card has-media">
-        <div class="tl-thumb"><img src="./assets/images/iti.jpg" alt="ITI Information Technology Institute" loading="lazy"></div>
-        <div class="tl-body">
-          <div class="tl-title">Back-End PHP &amp; MySQL Track</div>
-          <div class="tl-sub">ITI — Information Technology Institute</div>
-          <div class="tl-desc">Intensive program covering PHP fundamentals, OOP, PDO, MySQL and relational database design.</div>
+
+      <div class="scroll-indicator" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+      </div>
+    </section>
+
+    <!-- ════════════════ ABOUT ════════════════ -->
+    <section id="about" class="section section-divider reveal reveal-up" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="dot"></span> About Me</span>
+          <h2 id="about-title" class="section-title" style="margin-top:1rem">The story <span class="text-gradient">behind the code</span></h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">Full-Stack Developer from Aswan, Egypt — building clean, performant web apps with PHP, Laravel &amp; React.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-photo">
+            <img src="assets/images/1.png" alt="Abdelwahab Adel" loading="lazy" width="380" height="380">
+            <div class="about-photo-overlay"></div>
+            <div class="about-photo-caption">
+              <span style="font-size:var(--fs-xs); font-weight:700; color:var(--color-primary); letter-spacing:var(--ls-wider); text-transform:uppercase; display:block; margin-bottom:4px;">Location</span>
+              <h3 style="color:var(--neutral-0); font-size:var(--fs-lg); display:flex; align-items:center; gap:0.5rem;">
+                <i data-lucide="map-pin" style="width:18px; height:18px; color:var(--color-accent)" aria-hidden="true"></i> Aswan, Egypt 🇪🇬
+              </h3>
+            </div>
+            <div class="about-photo-dashed" aria-hidden="true"></div>
+          </div>
+
+          <div>
+            <h3 style="font-size:var(--fs-2xl); margin-bottom:1rem">Building elegant, performant web applications.</h3>
+            <p style="color:var(--text-mid); margin-bottom:1rem; line-height:var(--lh-relaxed)">
+              I'm <strong style="color:var(--text-hi)">Abdelwahab Adel</strong>, a Full-Stack Developer with a passion for building clean, performant web applications. Currently finishing my Bachelor of Computer Science at Luxor University.
+            </p>
+            <p style="color:var(--text-mid); margin-bottom:1.5rem; line-height:var(--lh-relaxed)">
+              I specialise in <strong style="color:var(--text-hi)">PHP &amp; Laravel</strong> on the back-end and bring designs to life with modern front-end technologies like <strong style="color:var(--text-hi)">React.js</strong> and <strong style="color:var(--text-hi)">Sass</strong>. I care deeply about clean code, good architecture, and user experience.
+            </p>
+
+            <div class="facts-grid">
+              <div class="fact-card">
+                <div class="label">Age</div>
+                <div class="value">23</div>
+              </div>
+              <div class="fact-card">
+                <div class="label">Experience</div>
+                <div class="value">5+ yrs</div>
+              </div>
+              <div class="fact-card">
+                <div class="label">Projects</div>
+                <div class="value">49+</div>
+              </div>
+              <div class="fact-card">
+                <div class="label">Satisfaction</div>
+                <div class="value">100%</div>
+              </div>
+            </div>
+
+            <div style="display:flex; flex-wrap:wrap; gap:0.75rem; margin-top:1.5rem">
+              <a href="https://drive.google.com/drive/folders/1y7p870-NbS-smc41o3XkBg7El0RMP5gp" target="_blank" rel="noopener" class="btn btn-primary magnetic">
+                <i data-lucide="external-link" class="icon" aria-hidden="true"></i> View Resume
+              </a>
+              <a href="#contact" class="btn btn-accent magnetic">
+                <i data-lucide="message-square" class="icon" aria-hidden="true"></i> Let's Talk
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Animated stats counters -->
+        <div class="stats-row" style="margin-top:5rem">
+          <div class="stat-card reveal reveal-up delay-100">
+            <span class="number" data-count="49">0</span><span class="suffix">+</span>
+            <span class="desc">Projects Delivered</span>
+          </div>
+          <div class="stat-card reveal reveal-up delay-200">
+            <span class="number" data-count="5">0</span><span class="suffix">+</span>
+            <span class="desc">Years Coding</span>
+          </div>
+          <div class="stat-card reveal reveal-up delay-300">
+            <span class="number" data-count="100">0</span><span class="suffix">%</span>
+            <span class="desc">Client Satisfaction</span>
+          </div>
+          <div class="stat-card reveal reveal-up delay-400">
+            <span class="number" data-count="7">0</span><span class="suffix">+</span>
+            <span class="desc">Certifications</span>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ═══ COURSES ═══ -->
-<section id="course">
-  <div class="s-label">Lifelong Learning</div>
-  <h2 class="s-title sr up">Courses &amp; <span class="grad-text">Certs</span></h2>
-  <div class="certs-grid">
-    <a class="cert-card sr up" href="https://www.coursera.org/account/accomplishments/verify/DLH2GJR2LCTN" target="_blank" rel="noopener"><img src="https://img.icons8.com/?size=100&id=PvvcWRWxRKSR&format=png&color=000000" alt="Front-end" loading="lazy"><span>Front-End Dev</span></a>
-    <a class="cert-card sr up" style="transition-delay:.06s" href="https://www.linkedin.com/posts/abdelwahab-adel-57265926b_" target="_blank" rel="noopener"><img src="https://img.icons8.com/?size=100&id=PvvcWRWxRKSR&format=png&color=000000" alt="Front-End certificate" loading="lazy"><span>Front-End</span></a>
-    <a class="cert-card sr up" style="transition-delay:.12s" href="https://www.linkedin.com/posts/abdelwahab-adel-57265926b_" target="_blank" rel="noopener"><img src="./assets/images/mt.png" alt="Front-End Track" loading="lazy"><span>Front-End Track</span></a>
-    <a class="cert-card sr up" style="transition-delay:.18s" href="https://www.sololearn.com/en/certificates/CC-OM4QPIDY" target="_blank" rel="noopener"><img src="./assets/images/Sololearn.png" alt="SoloLearn" loading="lazy"><span>PHP — SoloLearn</span></a>
-    <a class="cert-card sr up" style="transition-delay:.24s" href="https://www.udemy.com/certificate/UC-c563a589-f1a0-458f-8622-120f0c57e2f5/" target="_blank" rel="noopener"><img src="./assets/images/udemy.jpg" alt="Udemy" loading="lazy"><span>PHP Laravel 2023</span></a>
-    <a class="cert-card sr up" style="transition-delay:.3s" href="https://www.coursera.org/account/accomplishments/specialization/BMYUW2THMELB" target="_blank" rel="noopener"><img src="./assets/images/infoec.jpeg" alt="Coursera" loading="lazy"><span>Laravel · Coursera</span></a>
-    <a class="cert-card sr up" style="transition-delay:.06s" href="https://www.linkedin.com/posts/abdelwahab-adel-57265926b_backend-laravel-activity-7146469879976562688-Z3hY" target="_blank" rel="noopener"><img src="./assets/images/itrax_academy.png" alt="Itrax" loading="lazy"><span>Laravel · Itrax</span></a>
-    <a class="cert-card sr up" style="transition-delay:.12s" href="https://www.coursera.org/account/accomplishments/verify/RUBQ6UT58CWV" target="_blank" rel="noopener"><img src="https://img.icons8.com/?size=100&id=31754&format=png&color=000000" alt="RDBMS" loading="lazy"><span>RDBMS</span></a>
-    <a class="cert-card sr up" style="transition-delay:.18s" href="https://www.coursera.org/account/accomplishments/verify/KFFP38EDGZFD" target="_blank" rel="noopener"><img src="https://img.icons8.com/?size=100&id=PvvcWRWxRKSR&format=png&color=000000" alt="MySQL" loading="lazy"><span>MySQL</span></a>
-  </div>
-</section>
+    <!-- ════════════════ SKILLS ════════════════ -->
+    <section id="skills" class="section section-divider reveal reveal-up" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="dot"></span> Skills &amp; Tech</span>
+          <h2 id="skills-title" class="section-title" style="margin-top:1rem">Tools I <span class="text-gradient">speak fluently</span></h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">Technologies and frameworks I work with daily — from back-end APIs to polished front-ends.</p>
+        </div>
 
-<!-- ═══ CONTACT ═══ -->
-<section id="contact" class="alt">
-  <div class="orb-field" aria-hidden="true">
-    <span class="orb orb-violet" style="top:auto; bottom:-180px; right:-140px;"></span>
-    <span class="orb orb-blue" style="top:-160px; left:-120px;"></span>
-  </div>
-  <div class="s-label">Get in touch</div>
-  <h2 class="s-title sr up">Let's <span class="grad-text">Talk</span></h2>
-  <div class="contact-grid">
-    <div class="contact-info sr lft">
-      <h3>Ready to build something great?</h3>
-      <p>Whether you have a project in mind, need a freelancer, or just want to say hello — my inbox is always open.</p>
-      <div class="contact-list">
-        <div class="c-item">
-          <div class="c-icon"><i class="fas fa-phone"></i></div>
-          <div class="c-text"><div class="c-label">Phone</div><div class="c-val">01100340198</div></div>
-        </div>
-        <div class="c-item">
-          <div class="c-icon"><i class="fas fa-envelope"></i></div>
-          <div class="c-text"><div class="c-label">Email</div><div class="c-val">abdelwahabadel777@gmail.com</div></div>
-        </div>
-        <div class="c-item">
-          <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
-          <div class="c-text"><div class="c-label">Location</div><div class="c-val">Aswan, Egypt</div></div>
+        <div class="skills-grid">
+          <!-- Left: info card -->
+          <div class="glass-card" style="padding:2rem; display:flex; flex-direction:column; gap:1.5rem">
+            <div>
+              <span class="eyebrow" style="background:transparent; padding:0; border:none; margin-bottom:0.5rem; display:inline-block"><span class="dot"></span> My Toolbox</span>
+              <h3 style="font-size:var(--fs-2xl); margin:0.5rem 0 1rem">Full-Stack engineering — PHP, Laravel &amp; modern front-end</h3>
+              <p style="color:var(--text-mid); line-height:var(--lh-relaxed); margin-bottom:1.25rem">
+                I specialise in back-end systems with PHP &amp; Laravel, building scalable APIs, admin panels, and database architectures — combined with clean, responsive front-ends.
+              </p>
+
+              <div class="tech-pills">
+                <span class="tech-pill">PHP</span>
+                <span class="tech-pill purple">Laravel</span>
+                <span class="tech-pill">MySQL</span>
+                <span class="tech-pill pink">React.js</span>
+                <span class="tech-pill neutral">HTML5</span>
+                <span class="tech-pill neutral">CSS3</span>
+                <span class="tech-pill neutral">Sass</span>
+                <span class="tech-pill neutral">JavaScript</span>
+                <span class="tech-pill neutral">Bootstrap</span>
+                <span class="tech-pill neutral">jQuery</span>
+                <span class="tech-pill neutral">Git</span>
+                <span class="tech-pill neutral">Linux</span>
+                <span class="tech-pill neutral">Python</span>
+                <span class="tech-pill neutral">C++</span>
+                <span class="tech-pill neutral">C#</span>
+              </div>
+            </div>
+
+            <div class="contact-info-card cyan" style="margin:0">
+              <div class="icon"><i data-lucide="zap" style="width:20px; height:20px" aria-hidden="true"></i></div>
+              <div>
+                <span class="label">Philosophy</span>
+                <span class="value">Clean Architecture Advocate</span>
+                <p style="font-size:var(--fs-xs); color:var(--text-mid); margin-top:4px;">Solid OOP, MVC patterns, REST APIs, and maintainable code bases.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: progress bars -->
+          <div style="display:flex; flex-direction:column; gap:1.5rem; padding:0.5rem 0">
+            <div class="skill-progress-item">
+              <div class="row">
+                <span class="name"><i data-lucide="server" class="icon" style="color:var(--color-secondary)"></i> PHP &amp; Laravel</span>
+                <span class="value">92%</span>
+              </div>
+              <div class="progress-track"><div class="progress-bar" data-target="92"></div></div>
+            </div>
+            <div class="skill-progress-item">
+              <div class="row">
+                <span class="name"><i data-lucide="database" class="icon" style="color:var(--color-primary)"></i> MySQL / Databases</span>
+                <span class="value">88%</span>
+              </div>
+              <div class="progress-track"><div class="progress-bar" data-target="88"></div></div>
+            </div>
+            <div class="skill-progress-item">
+              <div class="row">
+                <span class="name"><i data-lucide="palette" class="icon" style="color:#f97316"></i> HTML / CSS / Sass</span>
+                <span class="value">95%</span>
+              </div>
+              <div class="progress-track"><div class="progress-bar" data-target="95"></div></div>
+            </div>
+            <div class="skill-progress-item">
+              <div class="row">
+                <span class="name"><i data-lucide="atom" class="icon" style="color:var(--color-primary)"></i> JavaScript / React.js</span>
+                <span class="value">80%</span>
+              </div>
+              <div class="progress-track"><div class="progress-bar" data-target="80"></div></div>
+            </div>
+            <div class="skill-progress-item">
+              <div class="row">
+                <span class="name"><i data-lucide="git-branch" class="icon" style="color:#ef4444"></i> Git &amp; GitHub</span>
+                <span class="value">85%</span>
+              </div>
+              <div class="progress-track"><div class="progress-bar" data-target="85"></div></div>
+            </div>
+            <div class="skill-progress-item">
+              <div class="row">
+                <span class="name"><i data-lucide="shield-check" class="icon" style="color:var(--color-success)"></i> REST API Design</span>
+                <span class="value">90%</span>
+              </div>
+              <div class="progress-track"><div class="progress-bar" data-target="90"></div></div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <form id="contact-form" class="contact-form sr rgt" novalidate>
-      <div class="form-group"><input type="text" name="name" placeholder="Your Name" required autocomplete="name"></div>
-      <div class="form-group"><input type="email" name="email" placeholder="Your Email" required autocomplete="email"></div>
-      <div class="form-group"><input type="tel" name="phone" placeholder="Phone (optional)" autocomplete="tel"></div>
-      <div class="form-group"><textarea name="message" placeholder="Your Message" required></textarea></div>
-      <button type="submit" class="btn-primary btn-block magnetic">
-        <span class="btn-label"><span>Send Message</span> <i class="fas fa-paper-plane"></i></span>
-      </button>
-      <div class="form-note" role="status" aria-live="polite"></div>
-    </form>
-  </div>
-</section>
+    </section>
 
-<!-- ═══ FOOTER ═══ -->
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div class="f-logo">Abdelwahab<span>.</span></div>
-      <p>Full-Stack Developer · PHP &amp; Laravel specialist. Open to freelance &amp; full-time opportunities. Keep Building. 🚀</p>
-    </div>
+    <!-- ════════════════ SERVICES (NEW) ════════════════ -->
+    <section id="services" class="section section-divider reveal reveal-up" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="dot"></span> What I Offer</span>
+          <h2 id="services-title" class="section-title" style="margin-top:1rem">Services that <span class="text-gradient">drive results</span></h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">From concept to deployment — end-to-end engineering for ambitious teams and individuals.</p>
+        </div>
 
-    <div class="footer-col">
-      <h4>Navigation</h4>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#work">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#course">Courses</a>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <p>01100340198</p>
-      <p>abdelwahabadel777@gmail.com</p>
-      <p>Aswan, Egypt</p>
-      <div class="footer-socials">
-        <a href="https://www.linkedin.com/in/abdelwahab-adel-57265926b" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="mailto:abdelwahabadel777@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://www.facebook.com/profile.php?id=100008450681129" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-        <a href="http://t.me/Abdelwahab77" target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
-        <a href="https://wa.me/+0201100340198" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="icon-wrap"><i data-lucide="server" aria-hidden="true"></i></div>
+            <h3>Backend Development</h3>
+            <p>Scalable, secure server-side systems built with PHP &amp; Laravel — RESTful APIs, admin panels, and database architectures.</p>
+            <ul>
+              <li><i data-lucide="check" aria-hidden="true"></i> REST API design</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Database modelling</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Authentication &amp; roles</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Payment integration</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="icon-wrap"><i data-lucide="layout" aria-hidden="true"></i></div>
+            <h3>Frontend Engineering</h3>
+            <p>Pixel-perfect, responsive interfaces with React.js, modern CSS, and accessible component patterns.</p>
+            <ul>
+              <li><i data-lucide="check" aria-hidden="true"></i> React.js apps</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Responsive layouts</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Animations &amp; micro-interactions</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Accessibility-first</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="icon-wrap"><i data-lucide="shopping-cart" aria-hidden="true"></i></div>
+            <h3>E-commerce Solutions</h3>
+            <p>Complete online stores with cart, checkout, admin dashboards, and inventory management.</p>
+            <ul>
+              <li><i data-lucide="check" aria-hidden="true"></i> Product catalogues</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Order management</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Payment gateways</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Analytics &amp; reports</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="icon-wrap"><i data-lucide="file-code-2" aria-hidden="true"></i></div>
+            <h3>Full-Stack Apps</h3>
+            <p>End-to-end web applications — from database to deployment — with a single engineer accountable for the stack.</p>
+            <ul>
+              <li><i data-lucide="check" aria-hidden="true"></i> SaaS dashboards</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Hospital &amp; school systems</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Portfolio sites</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> CMS platforms</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="icon-wrap"><i data-lucide="plug" aria-hidden="true"></i></div>
+            <h3>API Integration</h3>
+            <p>Connect third-party services seamlessly — payments, AI, maps, social, and custom webhooks.</p>
+            <ul>
+              <li><i data-lucide="check" aria-hidden="true"></i> REST &amp; GraphQL</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Webhooks &amp; queues</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> AI / OpenAI integration</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Rate limiting &amp; caching</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="icon-wrap"><i data-lucide="wrench" aria-hidden="true"></i></div>
+            <h3>Maintenance &amp; Support</h3>
+            <p>Keep your product healthy — bug fixes, performance tuning, security patches, and feature additions.</p>
+            <ul>
+              <li><i data-lucide="check" aria-hidden="true"></i> Bug fixing</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Performance audits</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Security hardening</li>
+              <li><i data-lucide="check" aria-hidden="true"></i> Continuous improvements</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ PROJECTS ════════════════ -->
+    <section id="projects" class="section section-divider reveal reveal-up" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="dot"></span> Portfolio</span>
+          <h2 id="projects-title" class="section-title" style="margin-top:1rem">Featured <span class="text-gradient">projects</span></h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">A selection of real-world projects built across different domains and stacks.</p>
+        </div>
+
+        <div class="filter-pills" role="tablist" aria-label="Filter projects">
+          <button class="filter-pill active" data-filter="all" role="tab" aria-selected="true">All Projects</button>
+          <button class="filter-pill" data-filter="laravel" role="tab" aria-selected="false">Laravel / PHP</button>
+          <button class="filter-pill" data-filter="react" role="tab" aria-selected="false">React / JS</button>
+          <button class="filter-pill" data-filter="frontend" role="tab" aria-selected="false">Front-End</button>
+        </div>
+
+        <div class="projects-grid" id="projects-grid">
+
+          <article class="project-card" data-category="laravel">
+            <div class="project-thumb">
+              <img src="assets/images/graduation-project.png" alt="Luxor University Website — faculty portal with student management" loading="lazy" width="600" height="340">
+              <div class="project-overlay">
+                <button class="project-overlay-btn" aria-label="Preview"><i data-lucide="eye" aria-hidden="true"></i></button>
+                <button class="project-overlay-btn" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></button>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag purple">Laravel</span>
+                <span class="project-tag cyan">PHP</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Luxor University Website</h3>
+              <p>Full faculty portal with student management, news, and dynamic content systems.</p>
+              <div class="project-meta">
+                <span><i data-lucide="folder" style="width:14px;height:14px" aria-hidden="true"></i> Laravel · PHP</span>
+                <span><i data-lucide="star" style="width:14px;height:14px;color:var(--color-warning)" aria-hidden="true"></i> Featured</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="laravel">
+            <div class="project-thumb">
+              <img src="assets/images/ecommerce-websit.png" alt="E-Commerce Platform — full shop with admin panel" loading="lazy" width="600" height="340">
+              <div class="project-overlay">
+                <button class="project-overlay-btn" aria-label="Preview"><i data-lucide="eye" aria-hidden="true"></i></button>
+                <button class="project-overlay-btn" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></button>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag purple">Laravel</span>
+                <span class="project-tag cyan">MySQL</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>E-Commerce Platform</h3>
+              <p>Full-featured shop with cart, orders, admin panel, and payment integration.</p>
+              <div class="project-meta">
+                <span><i data-lucide="folder" style="width:14px;height:14px" aria-hidden="true"></i> Laravel · MySQL</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="laravel">
+            <div class="project-thumb">
+              <img src="assets/images/hospital management System.png" alt="Hospital Management System — patient records and appointments" loading="lazy" width="600" height="340">
+              <div class="project-overlay">
+                <button class="project-overlay-btn" aria-label="Preview"><i data-lucide="eye" aria-hidden="true"></i></button>
+                <button class="project-overlay-btn" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></button>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag purple">Laravel</span>
+                <span class="project-tag cyan">MySQL</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Hospital Management System</h3>
+              <p>Patient records, appointments, doctor management and analytics.</p>
+              <div class="project-meta">
+                <span><i data-lucide="folder" style="width:14px;height:14px" aria-hidden="true"></i> Laravel · MySQL</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="react">
+            <div class="project-thumb">
+              <img src="assets/images/Screenshot 2026-05-27 224803.png" alt="KATO — integrated service center for home maintenance" loading="lazy" width="600" height="340">
+              <div class="project-overlay">
+                <button class="project-overlay-btn" aria-label="Preview"><i data-lucide="eye" aria-hidden="true"></i></button>
+                <button class="project-overlay-btn" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></button>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag cyan">React</span>
+                <span class="project-tag pink">API</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>KATO — Integrated Service Center</h3>
+              <p>Maintenance and home services platform with a bilingual interface for electrical, plumbing, and AC services.</p>
+              <div class="project-meta">
+                <span><i data-lucide="folder" style="width:14px;height:14px" aria-hidden="true"></i> React · API · JS</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="react">
+            <div class="project-thumb">
+              <img src="assets/images/Screenshot 2026-05-27 224726.png" alt="Egypt Golden Platform — live gold and currency prices" loading="lazy" width="600" height="340">
+              <div class="project-overlay">
+                <button class="project-overlay-btn" aria-label="Preview"><i data-lucide="eye" aria-hidden="true"></i></button>
+                <button class="project-overlay-btn" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></button>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag cyan">React</span>
+                <span class="project-tag yellow">AI</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Egypt Golden Platform</h3>
+              <p>Live gold, bullion and currency price platform with AI-powered smart analysis and real-time market indicators.</p>
+              <div class="project-meta">
+                <span><i data-lucide="folder" style="width:14px;height:14px" aria-hidden="true"></i> React · API · AI</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="react">
+            <div class="project-thumb">
+              <img src="assets/images/film.png" alt="Movies Website — browse films via API" loading="lazy" width="600" height="340">
+              <div class="project-overlay">
+                <button class="project-overlay-btn" aria-label="Preview"><i data-lucide="eye" aria-hidden="true"></i></button>
+                <button class="project-overlay-btn" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></button>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag cyan">React</span>
+                <span class="project-tag pink">API</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Movies Website</h3>
+              <p>Browse and search movies via API with dynamic rendering and React hooks.</p>
+              <div class="project-meta">
+                <span><i data-lucide="folder" style="width:14px;height:14px" aria-hidden="true"></i> React · API</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="frontend">
+            <div class="project-thumb">
+              <img src="assets/images/asswan.png" alt="Asswan Culture — heritage showcase" loading="lazy" width="600" height="340">
+              <div class="project-overlay">
+                <button class="project-overlay-btn" aria-label="Preview"><i data-lucide="eye" aria-hidden="true"></i></button>
+                <button class="project-overlay-btn" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></button>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag cyan">HTML</span>
+                <span class="project-tag purple">CSS · JS</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Asswan Culture</h3>
+              <p>A cultural showcase for Aswan city — history, tourism, and local heritage.</p>
+              <div class="project-meta">
+                <span><i data-lucide="folder" style="width:14px;height:14px" aria-hidden="true"></i> HTML · CSS · JS</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="frontend">
+            <div class="project-thumb">
+              <img src="assets/images/Screenshot 2026-05-27 224744.png" alt="Al Rayyan Store — Saudi e-commerce" loading="lazy" width="600" height="340">
+              <div class="project-overlay">
+                <button class="project-overlay-btn" aria-label="Preview"><i data-lucide="eye" aria-hidden="true"></i></button>
+                <button class="project-overlay-btn" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></button>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag cyan">HTML</span>
+                <span class="project-tag purple">CSS · JS</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Al Rayyan Store</h3>
+              <p>Online store for the Saudi market with product categories and a WhatsApp-based checkout flow.</p>
+              <div class="project-meta">
+                <span><i data-lucide="folder" style="width:14px;height:14px" aria-hidden="true"></i> HTML · CSS · JS</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="frontend">
+            <div class="project-thumb">
+              <img src="assets/images/quran.png" alt="Quran Website — surahs and audio recitation" loading="lazy" width="600" height="340">
+              <div class="project-overlay">
+                <button class="project-overlay-btn" aria-label="Preview"><i data-lucide="eye" aria-hidden="true"></i></button>
+                <button class="project-overlay-btn" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></button>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag yellow">JavaScript</span>
+                <span class="project-tag pink">API</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Quran Website</h3>
+              <p>Browse surahs and ayahs with audio recitation and search capability.</p>
+              <div class="project-meta">
+                <span><i data-lucide="folder" style="width:14px;height:14px" aria-hidden="true"></i> JavaScript · API</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ WHY CHOOSE ME (NEW) ════════════════ -->
+    <section id="why" class="section section-divider reveal reveal-up" aria-labelledby="why-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="dot"></span> Why Me</span>
+          <h2 id="why-title" class="section-title" style="margin-top:1rem">Why teams <span class="text-gradient">work with me</span></h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">What sets my work apart — beyond just writing code.</p>
+        </div>
+
+        <div class="why-grid">
+          <article class="why-card">
+            <div class="num">01</div>
+            <h3>Production-Ready Code</h3>
+            <p>Clean architecture, SOLID principles, and zero shortcuts — every project ships with maintainable, testable code.</p>
+          </article>
+          <article class="why-card">
+            <div class="num">02</div>
+            <h3>Fast Turnaround</h3>
+            <p>5+ years of shipping means I deliver work in days, not weeks — without compromising quality.</p>
+          </article>
+          <article class="why-card">
+            <div class="num">03</div>
+            <h3>Pixel-Perfect UI</h3>
+            <p>Bridging the gap between design and engineering — interfaces that look exactly as envisioned.</p>
+          </article>
+          <article class="why-card">
+            <div class="num">04</div>
+            <h3>Full-Stack Thinking</h3>
+            <p>I see the whole system — database, API, UI, and deployment — so nothing falls between the cracks.</p>
+          </article>
+          <article class="why-card">
+            <div class="num">05</div>
+            <h3>Responsive &amp; Accessible</h3>
+            <p>Every interface works on every device and every user — keyboard, screen reader, slow connections.</p>
+          </article>
+          <article class="why-card">
+            <div class="num">06</div>
+            <h3>Open Communication</h3>
+            <p>Daily updates, clear timelines, and zero surprises — you're always in the loop.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ EXPERIENCE ════════════════ -->
+    <section id="experience" class="section section-divider reveal reveal-up" aria-labelledby="exp-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="dot"></span> Career Path</span>
+          <h2 id="exp-title" class="section-title" style="margin-top:1rem">Work <span class="text-gradient">experience</span></h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">My professional journey as a developer — from intern to full-stack freelancer.</p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-dot"><i data-lucide="monitor" style="width:14px;height:14px"></i></div>
+            <div class="timeline-card">
+              <span class="date">Oct 2022 — Present</span>
+              <h3>Front-End Developer</h3>
+              <p class="role">Freelance</p>
+              <p>Building responsive, accessible websites and web apps for clients. Specialising in modern CSS, JavaScript, and React-based UIs.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-dot" style="border-color:var(--color-secondary)"><i data-lucide="server" style="width:14px;height:14px"></i></div>
+            <div class="timeline-card">
+              <span class="date">Sep 2023 — Present</span>
+              <h3>Back-End Developer</h3>
+              <p class="role purple">Freelance</p>
+              <p>Designing and implementing PHP/Laravel APIs, database schemas, and admin systems for small-to-medium businesses.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-dot" style="border-color:var(--color-accent)"><i data-lucide="briefcase" style="width:14px;height:14px"></i></div>
+            <div class="timeline-card">
+              <span class="date">May 2021 — Jun 2021</span>
+              <h3>Back-End Developer — Internship</h3>
+              <p class="role pink">CodeAlpha</p>
+              <p>Built backend modules, worked with team workflows, code reviews and learned industry best practices.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ EDUCATION ════════════════ -->
+    <section id="education" class="section section-divider reveal reveal-up" aria-labelledby="edu-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="dot"></span> Learning</span>
+          <h2 id="edu-title" class="section-title" style="margin-top:1rem">My <span class="text-gradient">education</span></h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">Academic background and continuous training.</p>
+        </div>
+
+        <div class="edu-grid">
+          <!-- Edu 1: Luxor University -->
+          <article class="edu-card glass-card reveal reveal-up delay-100">
+            <div class="edu-image">
+              <img src="assets/images/educat/luxor.jpg" alt="Luxor University campus" loading="lazy" width="800" height="380" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="edu-image-fallback" style="display:none">
+                <i data-lucide="graduation-cap" style="width:48px;height:48px;color:var(--color-primary)" aria-hidden="true"></i>
+                <span>Luxor University</span>
+              </div>
+              <span class="edu-year">2020 — 2024</span>
+              <div class="edu-image-overlay">
+                <i data-lucide="graduation-cap" style="width:22px;height:22px;color:var(--color-primary)" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="edu-body">
+              <h3>Bachelor of Computer Science</h3>
+              <p class="role">Faculty of Computers &amp; Information · Luxor University</p>
+              <p>Studied algorithms, data structures, databases, operating systems, software engineering, and web development. Graduated successfully.</p>
+            </div>
+          </article>
+
+          <!-- Edu 2: ITI -->
+          <article class="edu-card glass-card reveal reveal-up delay-200">
+            <div class="edu-image">
+              <img src="assets/images/iti.jpg" alt="Information Technology Institute" loading="lazy" width="800" height="380" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="edu-image-fallback purple" style="display:none">
+                <i data-lucide="book-open" style="width:48px;height:48px;color:var(--color-secondary)" aria-hidden="true"></i>
+                <span>ITI</span>
+              </div>
+              <span class="edu-year purple">Aug 2023 — Sep 2023</span>
+              <div class="edu-image-overlay">
+                <i data-lucide="book-open" style="width:22px;height:22px;color:var(--color-secondary)" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="edu-body">
+              <h3>Back-End PHP &amp; MySQL Track</h3>
+              <p class="role purple">ITI — Information Technology Institute</p>
+              <p>Intensive program covering PHP fundamentals, OOP, PDO, MySQL and relational database design.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ COURSES / CERTS ════════════════ -->
+    <section id="courses" class="section section-divider reveal reveal-up" aria-labelledby="courses-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="dot"></span> Courses &amp; Certs</span>
+          <h2 id="courses-title" class="section-title" style="margin-top:1rem">Lifelong <span class="text-gradient">learning</span></h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">Certified across multiple platforms — staying sharp is a habit.</p>
+        </div>
+
+        <div class="projects-grid" style="grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:0.75rem">
+          <a href="https://www.coursera.org/account/accomplishments/verify/DLH2GJR2LCTN" target="_blank" rel="noopener" class="glass-card" style="padding:1.25rem; display:flex; flex-direction:column; align-items:center; gap:0.75rem; text-align:center; transition: all var(--dur-fast) var(--ease-spring);">
+            <img src="https://img.icons8.com/?size=100&id=PvvcWRWxRKSR&format=png&color=000000" alt="" loading="lazy" width="48" height="48" style="object-fit:contain;border-radius:8px">
+            <span style="font-size:var(--fs-xs); font-weight:600; color:var(--text-mid)">Front-End Dev</span>
+          </a>
+          <a href="https://www.sololearn.com/en/certificates/CC-OM4QPIDY" target="_blank" rel="noopener" class="glass-card" style="padding:1.25rem; display:flex; flex-direction:column; align-items:center; gap:0.75rem; text-align:center">
+            <img src="assets/images/Sololearn.png" alt="" loading="lazy" width="48" height="48" style="object-fit:contain;border-radius:8px">
+            <span style="font-size:var(--fs-xs); font-weight:600; color:var(--text-mid)">PHP — SoloLearn</span>
+          </a>
+          <a href="https://www.udemy.com/certificate/UC-c563a589-f1a0-458f-8622-120f0c57e2f5/" target="_blank" rel="noopener" class="glass-card" style="padding:1.25rem; display:flex; flex-direction:column; align-items:center; gap:0.75rem; text-align:center">
+            <img src="assets/images/udemy.jpg" alt="" loading="lazy" width="48" height="48" style="object-fit:contain;border-radius:8px">
+            <span style="font-size:var(--fs-xs); font-weight:600; color:var(--text-mid)">PHP Laravel 2023</span>
+          </a>
+          <a href="https://www.coursera.org/account/accomplishments/specialization/BMYUW2THMELB" target="_blank" rel="noopener" class="glass-card" style="padding:1.25rem; display:flex; flex-direction:column; align-items:center; gap:0.75rem; text-align:center">
+            <img src="assets/images/infoec.jpeg" alt="" loading="lazy" width="48" height="48" style="object-fit:contain;border-radius:8px">
+            <span style="font-size:var(--fs-xs); font-weight:600; color:var(--text-mid)">Laravel · Coursera</span>
+          </a>
+          <a href="https://www.linkedin.com/posts/abdelwahab-adel-57265926b_backend-laravel-activity-7146469879976562688-Z3hY" target="_blank" rel="noopener" class="glass-card" style="padding:1.25rem; display:flex; flex-direction:column; align-items:center; gap:0.75rem; text-align:center">
+            <img src="assets/images/itrax_academy.png" alt="" loading="lazy" width="48" height="48" style="object-fit:contain;border-radius:8px">
+            <span style="font-size:var(--fs-xs); font-weight:600; color:var(--text-mid)">Laravel · Itrax</span>
+          </a>
+          <a href="https://www.coursera.org/account/accomplishments/verify/RUBQ6UT58CWV" target="_blank" rel="noopener" class="glass-card" style="padding:1.25rem; display:flex; flex-direction:column; align-items:center; gap:0.75rem; text-align:center">
+            <img src="https://img.icons8.com/?size=100&id=31754&format=png&color=000000" alt="" loading="lazy" width="48" height="48" style="object-fit:contain;border-radius:8px">
+            <span style="font-size:var(--fs-xs); font-weight:600; color:var(--text-mid)">RDBMS · Coursera</span>
+          </a>
+          <a href="https://www.coursera.org/account/accomplishments/verify/KFFP38EDGZFD" target="_blank" rel="noopener" class="glass-card" style="padding:1.25rem; display:flex; flex-direction:column; align-items:center; gap:0.75rem; text-align:center">
+            <img src="https://img.icons8.com/?size=100&id=PvvcWRWxRKSR&format=png&color=000000" alt="" loading="lazy" width="48" height="48" style="object-fit:contain;border-radius:8px">
+            <span style="font-size:var(--fs-xs); font-weight:600; color:var(--text-mid)">MySQL</span>
+          </a>
+          <a href="https://data-flair.training/verify/7A6372E902-7A4B4024DA-73555FB68E/" target="_blank" rel="noopener" class="glass-card" style="padding:1.25rem; display:flex; flex-direction:column; align-items:center; gap:0.75rem; text-align:center">
+            <img src="assets/images/Screenshot 2026-06-19 175306.png" alt="" loading="lazy" width="48" height="48" style="object-fit:contain;border-radius:8px">
+            <span style="font-size:var(--fs-xs); font-weight:600; color:var(--text-mid)">Front-End Track</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ PROCESS (NEW) ════════════════ -->
+    <section id="process" class="section section-divider reveal reveal-up" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="dot"></span> How I Work</span>
+          <h2 id="process-title" class="section-title" style="margin-top:1rem">My <span class="text-gradient">process</span></h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">A proven 6-step process that turns ideas into shipped products.</p>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-step">
+            <div class="step-icon"><i data-lucide="search" aria-hidden="true"></i></div>
+            <h3>Discovery</h3>
+            <p>Understanding your goals, users, constraints, and success metrics. No assumptions.</p>
+          </article>
+          <article class="process-step">
+            <div class="step-icon"><i data-lucide="clipboard-list" aria-hidden="true"></i></div>
+            <h3>Planning</h3>
+            <p>Architecture, tech-stack selection, milestones, and a clear delivery timeline.</p>
+          </article>
+          <article class="process-step">
+            <div class="step-icon"><i data-lucide="palette" aria-hidden="true"></i></div>
+            <h3>Design</h3>
+            <p>Wireframes, mockups, and component systems — visualised before code is written.</p>
+          </article>
+          <article class="process-step">
+            <div class="step-icon"><i data-lucide="code" aria-hidden="true"></i></div>
+            <h3>Development</h3>
+            <p>Iterative sprints with weekly demos. Clean code, tests, and version control.</p>
+          </article>
+          <article class="process-step">
+            <div class="step-icon"><i data-lucide="test-tube-2" aria-hidden="true"></i></div>
+            <h3>Testing</h3>
+            <p>Manual QA, performance audits, accessibility checks, and cross-device testing.</p>
+          </article>
+          <article class="process-step">
+            <div class="step-icon"><i data-lucide="rocket" aria-hidden="true"></i></div>
+            <h3>Launch &amp; Support</h3>
+            <p>Deployment, monitoring, and ongoing maintenance to keep everything running smoothly.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ════════════════ FAQ (NEW) ════════════════ -->
+    <section id="faq" class="section section-divider reveal reveal-up" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="dot"></span> FAQ</span>
+          <h2 id="faq-title" class="section-title" style="margin-top:1rem">Frequently <span class="text-gradient">asked</span></h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">Quick answers to common questions about working together.</p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>What types of projects do you take on?
+              <i data-lucide="chevron-down" class="chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="answer">I work on full-stack web applications — e-commerce, dashboards, SaaS, hospital/school systems, portfolio sites, REST APIs, and integrations. If it has a database and a UI, I'm in.</div>
+          </details>
+          <details class="faq-item">
+            <summary>What's your typical project timeline?
+              <i data-lucide="chevron-down" class="chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="answer">Small landing pages: 3–7 days. Standard business sites: 2–3 weeks. Full-stack apps with admin panels: 3–6 weeks. Complex systems with integrations: 6–10 weeks. Every project starts with a clear timeline.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Do you offer ongoing maintenance?
+              <i data-lucide="chevron-down" class="chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="answer">Yes — every project comes with 30 days of free bug-fix support. After that, I offer monthly maintenance packages covering updates, security patches, performance tuning, and feature additions.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Can you work with my existing team?
+              <i data-lucide="chevron-down" class="chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="answer">Absolutely. I'm comfortable in Git-based workflows, async tools (Slack, Jira, Notion), and have collaborated with designers, PMs, and other engineers on multi-person teams.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Are you available for full-time roles?
+              <i data-lucide="chevron-down" class="chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="answer">I'm open to full-time and contract opportunities — remote, hybrid, or on-site (Aswan/Cairo). Send me a message on LinkedIn or via the contact form below.</div>
+          </details>
+          <details class="faq-item">
+            <summary>How do payments work?
+              <i data-lucide="chevron-down" class="chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="answer">Fixed-price projects are split 30/40/30 — deposit, milestone, and final delivery. Hourly work is invoiced bi-weekly. Payments via bank transfer, PayPal, or USDT.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ CTA (NEW) ════════════════ -->
+    <section id="cta" class="section reveal reveal-up" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-card">
+          <span class="eyebrow"><span class="dot"></span> Let's Build Something</span>
+          <h2 id="cta-title" class="section-title" style="margin-top:1rem">Have a project in mind? <span class="text-gradient">Let's talk.</span></h2>
+          <p>Whether you need a full-stack app, a fresh portfolio, or just a quick consultation — my inbox is always open.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center; position:relative">
+            <a href="#contact" class="btn btn-primary magnetic">
+              <i data-lucide="mail" class="icon" aria-hidden="true"></i> Start a Project
+            </a>
+            <a href="https://wa.me/+0201100340198" target="_blank" rel="noopener" class="btn btn-ghost magnetic">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp Me
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ CONTACT ════════════════ -->
+    <section id="contact" class="section section-divider reveal reveal-up" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="dot"></span> Get In Touch</span>
+          <h2 id="contact-title" class="section-title" style="margin-top:1rem">Let's build something <span class="text-gradient">great</span></h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">Have a project in mind? Let's build something great together.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div>
+            <h3 style="font-size:var(--fs-2xl); margin-bottom:0.5rem">Ready to build something great?</h3>
+            <p style="color:var(--text-mid); margin-bottom:1.5rem; line-height:var(--lh-relaxed)">Whether you have a project in mind, need a freelancer, or just want to say hello — my inbox is always open.</p>
+
+            <a href="mailto:abdelwahabadel777@gmail.com" class="contact-info-card cyan" style="text-decoration:none">
+              <div class="icon"><i data-lucide="mail" style="width:20px;height:20px" aria-hidden="true"></i></div>
+              <div>
+                <span class="label">Email Me</span>
+                <span class="value">abdelwahabadel777@gmail.com</span>
+              </div>
+            </a>
+            <div class="contact-info-card purple">
+              <div class="icon"><i data-lucide="phone" style="width:20px;height:20px" aria-hidden="true"></i></div>
+              <div>
+                <span class="label">Phone</span>
+                <span class="value">01100340198</span>
+              </div>
+            </div>
+            <div class="contact-info-card pink">
+              <div class="icon"><i data-lucide="map-pin" style="width:20px;height:20px" aria-hidden="true"></i></div>
+              <div>
+                <span class="label">Location</span>
+                <span class="value">Aswan, Egypt 🇪🇬</span>
+              </div>
+            </div>
+            <div class="contact-info-card green">
+              <div class="icon"><i data-lucide="briefcase" style="width:20px;height:20px" aria-hidden="true"></i></div>
+              <div>
+                <span class="label">Availability</span>
+                <span class="value">Open to freelance &amp; full-time</span>
+              </div>
+            </div>
+
+            <div style="margin-top:1.5rem">
+              <span style="font-size:var(--fs-xs); letter-spacing:var(--ls-widest); text-transform:uppercase; color:var(--text-mid); font-weight:600; display:block; margin-bottom:0.75rem">Or reach me on</span>
+              <div style="display:flex; gap:0.5rem; flex-wrap:wrap">
+                <a href="https://www.linkedin.com/in/abdelwahab-adel-57265926b" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                <a href="https://wa.me/+0201100340198" target="_blank" rel="noopener" class="social-icon" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+                <a href="http://t.me/Abdelwahab77" target="_blank" rel="noopener" class="social-icon" aria-label="Telegram"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=100008450681129" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <form id="contact-form" class="contact-form" novalidate aria-label="Contact form">
+            <div class="row">
+              <div class="field">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required placeholder="John Doe" autocomplete="name">
+                <span class="error-msg" id="err-name" aria-live="polite"></span>
+              </div>
+              <div class="field">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" required placeholder="you@example.com" autocomplete="email">
+                <span class="error-msg" id="err-email" aria-live="polite"></span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required placeholder="Project Discussion">
+              <span class="error-msg" id="err-subject" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
+              <span class="error-msg" id="err-message" aria-live="polite"></span>
+            </div>
+            <button type="submit" id="submit-btn" class="btn btn-primary" style="width:100%">
+              <span id="submit-text">Send Message</span>
+              <i data-lucide="send" class="icon" aria-hidden="true"></i>
+            </button>
+            <div id="form-feedback" class="form-feedback" hidden aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="#home" class="logo" style="margin-bottom:1rem">
+            <span class="text-gradient">ABDELWAHAB</span><span style="color:var(--text-mid);font-weight:400">.</span>
+          </a>
+          <p class="about">Full-Stack Developer · PHP &amp; Laravel specialist based in Aswan, Egypt. Building clean back-ends and beautiful front-ends.</p>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/in/abdelwahab-adel-57265926b" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+            <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100008450681129" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="https://wa.me/+0201100340198" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+            <a href="http://t.me/Abdelwahab77" target="_blank" rel="noopener" aria-label="Telegram"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Backend Development</a></li>
+            <li><a href="#services">Frontend Engineering</a></li>
+            <li><a href="#services">Full-Stack Apps</a></li>
+            <li><a href="#services">API Integration</a></li>
+            <li><a href="#services">Maintenance</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p class="about" style="font-size:var(--fs-xs)">Get occasional updates on new projects and tech insights.</p>
+          <form class="newsletter-form" id="newsletter-form" novalidate>
+            <input type="email" name="newsletter-email" placeholder="your@email.com" required aria-label="Email for newsletter">
+            <button type="submit" aria-label="Subscribe"><i data-lucide="send" style="width:16px;height:16px" aria-hidden="true"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2026</span> Abdelwahab Adel. All Rights Reserved.</p>
+        <p>Crafted with <span style="color:var(--color-accent)">♥</span> using HTML, CSS &amp; JavaScript</p>
       </div>
     </div>
-  </div>
+  </footer>
 
-  <div class="footer-bottom">
-    <span>© 2026 Abdelwahab Adel.</span> All rights reserved.
-    <span>Built with HTML, CSS &amp; JavaScript.</span>
-  </div>
-</footer>
+  <!-- ════════════════ BACK TO TOP ════════════════ -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <svg class="progress-ring" width="50" height="50" aria-hidden="true">
+      <circle class="progress-ring__circle" stroke-width="2.5" fill="transparent" r="21" cx="25" cy="25"/>
+    </svg>
+    <i data-lucide="chevron-up" style="width:20px;height:20px; position:relative; z-index:1" aria-hidden="true"></i>
+  </button>
 
-<a href="#home" id="scroll-top" aria-label="Back to top"><i class="fas fa-angle-up"></i></a>
+  <!-- ════════════════ TOAST ════════════════ -->
+  <div id="toast" class="form-feedback" hidden style="position:fixed; bottom:6rem; right:1.5rem; z-index:70; max-width:320px; box-shadow:0 12px 32px rgba(0,0,0,0.2)"></div>
 
-<!-- SCRIPTS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script src="script.js"></script>
+  <!-- Scripts -->
+  <script src="main.js" defer></script>
+
 </body>
 </html>
