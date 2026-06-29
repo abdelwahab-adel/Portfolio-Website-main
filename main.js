@@ -282,7 +282,8 @@
 
         const filter = pill.getAttribute('data-filter');
         cards.forEach(card => {
-          const match = filter === 'all' || card.getAttribute('data-category') === filter;
+          const categories = card.getAttribute('data-category') || '';
+          const match = filter === 'all' || categories.split(/\s+/).includes(filter);
           if (match) {
             card.classList.remove('hidden');
             card.style.animation = 'fade-in-up 0.5s var(--ease-expo) both';
