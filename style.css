@@ -2163,7 +2163,7 @@ p { margin: 0; line-height: var(--lh-relaxed); }
   :focus-visible { outline-width: 3px; }
 }
 
-@media (max-width: 2100px) {
+@media (max-width: 1500px) {
 body{
     margin-right: -162px;
 }
