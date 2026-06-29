@@ -134,7 +134,7 @@
   /* ─── 6. Header scroll behaviour + active nav + scroll progress ────── */
   const initHeader = () => {
     const header  = $('#header');
-    const navLinks = $$('.nav-link');
+    const navLinks = $$('.nav-desktop .nav-link');
     const sections = $$('main section[id]');
     const progressBar = $('#scroll-progress');
 
@@ -172,7 +172,7 @@
         progressBar.style.width = `${pct}%`;
       }
     };
-    window.addEventListener('scroll', throttle(onScroll, 12), { passive: true });
+    window.addEventListener('scroll', throttle(onScroll, 16), { passive: true });
     onScroll();
   };
 
@@ -194,7 +194,7 @@
       circle.style.strokeDashoffset = circumference - (pct * circumference);
       btn.classList.toggle('visible', y > 300);
     };
-    window.addEventListener('scroll', throttle(onScroll, 12), { passive: true });
+    window.addEventListener('scroll', throttle(onScroll, 16), { passive: true });
     onScroll();
 
     btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
@@ -350,6 +350,19 @@
     });
   };
 
+  /* ─── 17. Toast notifications (defined early so modules below can use) ─ */
+  let toastTimer;
+  const showToast = (msg, type = 'success') => {
+    const el = $('#toast');
+    if (!el) return;
+    el.hidden = false;
+    el.classList.remove('success', 'error');
+    el.classList.add(type);
+    el.textContent = msg;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { el.hidden = true; }, 4000);
+  };
+
   /* ─── 14. Contact form (validation + simulated submit) ─────────────── */
   const initContactForm = () => {
     const form    = $('#contact-form');
@@ -400,7 +413,7 @@
 
       // Simulate submission
       btn.disabled = true;
-      txt.innerHTML = '<span class="preloader-ring" style="width:16px;height:16px;border-width:2px;display:inline-block;vertical-align:middle"></span> Sending...';
+      txt.innerHTML = '<span class="spinner-inline"></span> Sending...';
 
       setTimeout(() => {
         btn.disabled = false;
@@ -451,18 +464,7 @@
     });
   };
 
-  /* ─── 17. Toast notifications ──────────────────────────────────────── */
-  let toastTimer;
-  const showToast = (msg, type = 'success') => {
-    const el = $('#toast');
-    if (!el) return;
-    el.hidden = false;
-    el.classList.remove('success', 'error');
-    el.classList.add(type);
-    el.textContent = msg;
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => { el.hidden = true; }, 4000);
-  };
+
 
   /* ─── 18. Smooth anchor scrolling (with offset) ────────────────────── */
   const initSmoothScroll = () => {
