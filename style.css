@@ -1031,7 +1031,7 @@ p { margin: 0; line-height: var(--lh-relaxed); }
   gap: 1rem;
   margin-top: 3rem;
 }
-@media (min-width: 640px) { .stats-row { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 640px) { .stats-row { grid-template-columns: repeat(5, 1fr); } }
 .stat-card {
   text-align: center;
   padding: 1.5rem 1rem;
