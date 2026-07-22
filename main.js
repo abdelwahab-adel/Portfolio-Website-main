@@ -341,6 +341,147 @@
     start();
   };
 
+  /* ─── 12b. Project detail modal ────────────────────────────────────── */
+  const initProjectModal = () => {
+    const modal   = $('#project-modal');
+    const dialog  = $('.pm-dialog', modal);
+    const imgEl   = $('#pm-image', modal);
+    const typeEl  = $('#pm-type', modal);
+    const statusEl= $('#pm-status', modal);
+    const titleEl = $('#pm-title', modal);
+    const descEl  = $('#pm-desc', modal);
+    const actionsEl = $('#pm-actions', modal);
+    const techEl  = $('#pm-tech', modal);
+    const aboutEl = $('#pm-about-text', modal);
+    if (!modal || !dialog) return;
+
+    let lastFocused = null;
+
+    const buildActions = (links) => {
+      actionsEl.innerHTML = '';
+      links.forEach(({ href, label, icon, variant }) => {
+        if (!href) return;
+        const a = document.createElement('a');
+        a.href = href;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.className = `pm-btn ${variant === 'primary' ? 'pm-btn-primary' : 'pm-btn-ghost'}`;
+        a.innerHTML = `<i data-lucide="${icon}" aria-hidden="true"></i><span>${label}</span>`;
+        actionsEl.appendChild(a);
+      });
+      initLucide();
+    };
+
+    const openFromCard = (card) => {
+      const img    = $('img', card);
+      const title  = $('.project-body h3', card)?.textContent.trim() || '';
+      const desc   = $('.project-body p', card)?.textContent.trim() || '';
+      const tags   = $$('.project-tag', card).map(t => t.textContent.trim());
+      const overlayLinks = $$('.project-overlay-btn', card);
+      const demoHref = overlayLinks[0]?.getAttribute('href') || '';
+      const codeHref = overlayLinks[1]?.getAttribute('href') || '';
+      const type   = card.getAttribute('data-type') || 'Web Project';
+      const status = card.getAttribute('data-status') || 'Completed';
+      const about  = card.getAttribute('data-about') || desc;
+
+      imgEl.src = img ? img.src : '';
+      imgEl.alt = img ? img.alt : title;
+      typeEl.textContent = type;
+      statusEl.innerHTML = `<span class="pm-dot" aria-hidden="true"></span>${status}`;
+      titleEl.textContent = title;
+      descEl.textContent = desc;
+      aboutEl.textContent = about;
+
+      techEl.innerHTML = '';
+      tags.forEach(tag => {
+        const span = document.createElement('span');
+        span.textContent = tag;
+        techEl.appendChild(span);
+      });
+
+      buildActions([
+        { href: demoHref, label: 'Live Demo', icon: 'external-link', variant: 'primary' },
+      ]);
+
+      lastFocused = document.activeElement;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('pm-locked');
+      initLucide();
+      requestAnimationFrame(() => $('.pm-close', modal)?.focus());
+    };
+
+    const close = () => {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('pm-locked');
+      if (lastFocused) lastFocused.focus();
+    };
+
+    $$('.project-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.project-overlay-btn')) return; // let icon links navigate normally
+        openFromCard(card);
+      });
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.addEventListener('keydown', (e) => {
+        if ((e.key === 'Enter' || e.key === ' ') && !e.target.closest('.project-overlay-btn')) {
+          e.preventDefault();
+          openFromCard(card);
+        }
+      });
+    });
+
+    $$('[data-pm-close]', modal).forEach(el => el.addEventListener('click', close));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) close();
+    });
+  };
+
+  /* ─── 12c. Workflow snapshot — code panel switcher ─────────────────── */
+  const initWorkflow = () => {
+    const steps    = $$('.workflow-step');
+    const fileEl   = $('#workflow-file');
+    const codeEl   = $('#workflow-code-text');
+    const codePanel= $('.workflow-code');
+    const dots     = $$('.workflow-dots span');
+    if (!steps.length || !codeEl) return;
+
+    let isFirst = true;
+
+    const applyContent = (btn) => {
+      if (fileEl) fileEl.textContent = btn.getAttribute('data-file') || '';
+      codeEl.innerHTML = btn.getAttribute('data-code') || '';
+      const idx = steps.indexOf(btn);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    };
+
+    const render = (btn) => {
+      steps.forEach(s => { s.classList.remove('active'); s.setAttribute('aria-selected', 'false'); });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      if (isFirst || !codePanel) {
+        applyContent(btn);
+        isFirst = false;
+        return;
+      }
+
+      codePanel.classList.add('is-switching');
+      window.setTimeout(() => {
+        applyContent(btn);
+        codePanel.classList.remove('is-switching');
+      }, 180);
+    };
+
+    steps.forEach(btn => btn.addEventListener('click', () => {
+      if (btn.classList.contains('active')) return;
+      render(btn);
+    }));
+    render(steps[0]);
+  };
+
   /* ─── 13. FAQ accordion — single-open behaviour ────────────────────── */
   const initFaq = () => {
     const items = $$('.faq-item');
@@ -504,6 +645,8 @@
     initSkillBars();
     initCounters();
     initProjectFilter();
+    initProjectModal();
+    initWorkflow();
     initTestimonials();
     initFaq();
     initContactForm();
