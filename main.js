@@ -42,6 +42,7 @@
       if (now - last >= limit) { last = now; fn(...args); }
     };
   };
+  const isValidEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
   /* ─── 1. Preloader ─────────────────────────────────────────────────── */
   const initPreloader = () => {
@@ -272,27 +273,55 @@
   const initProjectFilter = () => {
     const pills   = $$('.filter-pill');
     const cards   = $$('.project-card');
+    const loadMoreBtn = $('#projects-load-more');
+    const LIMIT = 6;
     if (!pills.length) return;
+
+    let currentFilter = 'all';
+    let expanded = false;
+
+    const applyFilter = () => {
+      const matched = cards.filter(card => {
+        const categories = card.getAttribute('data-category') || '';
+        return currentFilter === 'all' || categories.split(/\s+/).includes(currentFilter);
+      });
+      const visible = expanded ? matched : matched.slice(0, LIMIT);
+      const visibleSet = new Set(visible);
+
+      cards.forEach(card => {
+        if (visibleSet.has(card)) {
+          card.classList.remove('hidden');
+          card.style.animation = 'fade-in-up 0.5s var(--ease-expo) both';
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (loadMoreBtn) {
+        const hasMore = !expanded && matched.length > LIMIT;
+        loadMoreBtn.hidden = !hasMore;
+      }
+    };
 
     pills.forEach(pill => {
       pill.addEventListener('click', () => {
         pills.forEach(p => { p.classList.remove('active'); p.setAttribute('aria-selected', 'false'); });
         pill.classList.add('active');
         pill.setAttribute('aria-selected', 'true');
-
-        const filter = pill.getAttribute('data-filter');
-        cards.forEach(card => {
-          const categories = card.getAttribute('data-category') || '';
-          const match = filter === 'all' || categories.split(/\s+/).includes(filter);
-          if (match) {
-            card.classList.remove('hidden');
-            card.style.animation = 'fade-in-up 0.5s var(--ease-expo) both';
-          } else {
-            card.classList.add('hidden');
-          }
-        });
+        currentFilter = pill.getAttribute('data-filter');
+        expanded = false;
+        applyFilter();
       });
     });
+
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', () => {
+        expanded = true;
+        applyFilter();
+      });
+    }
+
+    applyFilter();
   };
 
   /* ─── 12. Testimonials slider ──────────────────────────────────────── */
@@ -303,7 +332,7 @@
     const dotsCt = $('#slider-dots');
     if (!track) return;
 
-    const slides = track.children;
+    const slides = Array.from(track.children);
     const total  = slides.length;
     let index = 0, timer;
 
@@ -418,6 +447,20 @@
       if (lastFocused) lastFocused.focus();
     };
 
+    const trapFocus = (e) => {
+      if (e.key !== 'Tab' || !modal.classList.contains('open')) return;
+      const focusable = $$('button, a[href]', dialog).filter(el => el.offsetParent !== null);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last  = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
+    };
+    document.addEventListener('keydown', trapFocus);
+
     $$('.project-card').forEach(card => {
       card.addEventListener('click', (e) => {
         if (e.target.closest('.project-overlay-btn')) return; // let icon links navigate normally
@@ -435,7 +478,21 @@
 
     $$('[data-pm-close]', modal).forEach(el => el.addEventListener('click', close));
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('open')) close();
+      if (!modal.classList.contains('open')) return;
+      if (e.key === 'Escape') { close(); return; }
+      if (e.key === 'Tab') {
+        const focusable = $$('button, a[href]', dialog).filter(el => el.offsetParent !== null);
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last  = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     });
   };
 
@@ -515,7 +572,7 @@
 
     const validators = {
       name:    v => v.trim().length >= 2 || 'Name must be at least 2 characters',
-      email:   v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || 'Please enter a valid email',
+      email:   v => isValidEmail(v) || 'Please enter a valid email',
       subject: v => v.trim().length >= 3 || 'Subject must be at least 3 characters',
       message: v => v.trim().length >= 10 || 'Message must be at least 10 characters',
     };
@@ -582,7 +639,7 @@
       e.preventDefault();
       const input = $('input[name="newsletter-email"]', form);
       const value = input.value.trim();
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      if (!isValidEmail(value)) {
         showToast('Please enter a valid email', 'error');
         return;
       }
@@ -630,6 +687,15 @@
     if (el) el.textContent = new Date().getFullYear();
   };
 
+  /* ─── 19b. Dynamic age (calculated from birth year, no manual upkeep) ── */
+  const initDynamicAge = () => {
+    const el = $('#dynamic-age');
+    if (!el) return;
+    const birthYear = parseInt(el.getAttribute('data-birth-year'), 10);
+    if (!birthYear) return;
+    el.textContent = new Date().getFullYear() - birthYear;
+  };
+
   /* ─────────────────────────────────────────────────────────────────────
      Bootstrap — run on DOMContentLoaded
      ───────────────────────────────────────────────────────────────────── */
@@ -654,6 +720,7 @@
     initMagnetic();
     initSmoothScroll();
     initFooterYear();
+    initDynamicAge();
   });
 
   // Re-render Lucide icons after late DOM mutations (form states)

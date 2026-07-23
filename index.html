@@ -135,7 +135,7 @@
         <button id="theme-toggle" class="theme-switch" aria-label="Toggle theme">
           <span class="theme-switch-thumb" aria-hidden="true"></span>
         </button>
-        <a href="https://drive.google.com/drive/folders/1y7p870-NbS-smc41o3XkBg7El0RMP5gp" target="_blank" rel="noopener" class="btn btn-ghost magnetic" style="display:none">
+        <a href="https://drive.google.com/drive/folders/1y7p870-NbS-smc41o3XkBg7El0RMP5gp" target="_blank" rel="noopener" class="btn btn-ghost magnetic">
           <i data-lucide="download" class="icon" aria-hidden="true"></i><span>CV</span>
         </a>
         <button id="menu-btn" class="menu-btn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-nav">
@@ -243,7 +243,7 @@
             <div class="facts-grid">
               <div class="fact-card">
                 <div class="label">Age</div>
-                <div class="value">23</div>
+                <div class="value" id="dynamic-age" data-birth-year="2003">23</div>
               </div>
               <div class="fact-card">
                 <div class="label">Experience</div>
@@ -809,6 +809,12 @@
           </article>
 
   
+        </div>
+
+        <div style="display:flex; justify-content:center; margin-top:1.25rem">
+          <button type="button" id="projects-load-more" class="btn btn-ghost magnetic">
+            <i data-lucide="plus" class="icon" aria-hidden="true"></i> Load More Projects
+          </button>
         </div>
       </div>
     </section>

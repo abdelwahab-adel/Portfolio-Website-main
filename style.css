@@ -513,6 +513,8 @@ p { margin: 0; line-height: var(--lh-relaxed); }
   align-items: center;
   gap: 0.75rem;
 }
+.header-actions > a.btn { display: none; }
+@media (min-width: 1024px) { .header-actions > a.btn { display: inline-flex; } }
 
 /* Mobile menu */
 .menu-btn {
@@ -1337,6 +1339,7 @@ p { margin: 0; line-height: var(--lh-relaxed); }
   margin-bottom: 2rem;
   padding-left: 70px;
 }
+.timeline-item:last-child { margin-bottom: 0; }
 @media (min-width: 768px) {
   .timeline-item { padding-left: 0; width: 50%; }
   .timeline-item:nth-child(odd)  { padding-right: 50px; text-align: right; }
@@ -1538,9 +1541,36 @@ p { margin: 0; line-height: var(--lh-relaxed); }
   object-fit: cover;
   border: 2px solid var(--color-primary);
 }
+.testimonial-card .author .avatar {
+  flex-shrink: 0;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--neutral-0);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border: 2px solid rgba(255,255,255,0.15);
+}
 .testimonial-card .author .name { font-weight: 700; }
 .testimonial-card .author .role { font-size: var(--fs-xs); color: var(--text-mid); }
 .testimonial-card .stars { display: inline-flex; gap: 0.15rem; color: var(--color-warning); margin-bottom: 1rem; }
+.testimonial-card .stars svg { width: 18px; height: 18px; fill: currentColor; }
+.testimonial-card .author .avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: var(--neutral-0);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  border: 2px solid var(--color-primary);
+}
 
 .testimonial-controls {
   display: flex;
@@ -2088,7 +2118,7 @@ p { margin: 0; line-height: var(--lh-relaxed); }
    24. RESPONSIVE OVERRIDES
    ───────────────────────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
-  :root { --section-py: 4rem; --header-h: 70px; }
+  :root { --section-py: 2rem; --header-h: 70px; }
   .container { padding: 0 1rem; }
   .hero { padding-top: calc(var(--header-h) + 1rem); }
   .hero-headline { font-size: clamp(1.85rem, 8vw, 2.25rem); }
@@ -2101,6 +2131,11 @@ p { margin: 0; line-height: var(--lh-relaxed); }
   .footer-grid { text-align: left; }
   .hero-portrait { max-width: 280px; }
   .portrait-badge.b1, .portrait-badge.b2 { width: 44px; height: 44px; }
+  .section-head { margin: 0 auto 2.25rem; }
+}
+
+@media (max-width: 1023px) {
+  .hero { min-height: auto; padding-bottom: 3.5rem; }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -2120,11 +2155,12 @@ p { margin: 0; line-height: var(--lh-relaxed); }
   :focus-visible { outline-width: 3px; }
 }
 
-@media (max-width: 1500px) {
-body{
-    margin-right: -162px;
+/* Laptop-only micro offset — scoped so it never touches phones/tablets
+   (the old unscoped max-width:1500px version broke the mobile layout) */
+@media (min-width: 1024px) and (max-width: 1500px) {
+  body { margin-right: -162px; }
 }
-}
+
 /* ═══════════════════════════════════════════════════════════════════════
    PROJECT DETAIL MODAL
    ═══════════════════════════════════════════════════════════════════════ */
@@ -2511,3 +2547,10 @@ body.pm-locked { overflow: hidden; }
 .workflow-code-body .c-prop{ color: var(--color-primary); }
 .workflow-code-body .c-str { color: var(--color-success); }
 .workflow-code-body .c-arr { color: var(--color-warning); }
+
+
+@media (max-width: 1500px) {
+body{
+    margin-right: -162px;
+}
+}
