@@ -9,7 +9,7 @@
    4. Glass primitives
    5. Components (header, buttons, cards, forms, nav)
    6. Sections (hero, about, skills, projects, exp, edu, courses, services,
-      why, process, stats, testimonials, faq, blog, cta, contact, footer)
+      why, process, stats, faq, blog, cta, contact, footer)
    7. Animations & micro-interactions
    8. Utilities & responsive overrides
    9. Accessibility & reduced motion
@@ -1504,114 +1504,7 @@ p { margin: 0; line-height: var(--lh-relaxed); }
 .why-card p { font-size: var(--fs-sm); color: var(--text-mid); line-height: var(--lh-relaxed); }
 
 /* ─────────────────────────────────────────────────────────────────────────
-   17. TESTIMONIALS
-   ───────────────────────────────────────────────────────────────────────── */
-.testimonials-wrap {
-  position: relative;
-  max-width: 720px;
-  margin: 0 auto;
-  overflow: hidden;
-}
-.testimonials-track {
-  display: flex;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: transform;
-}
-.testimonial-card {
-  flex: 0 0 100%;
-  padding: 2rem;
-  border-radius: var(--r-2xl);
-  background: var(--surface-2);
-  border: 1px solid rgba(255,255,255,0.06);
-  text-align: center;
-}
-.testimonial-card .quote {
-  font-size: clamp(1.05rem, 2vw, var(--fs-xl));
-  line-height: var(--lh-relaxed);
-  color: var(--text-hi);
-  margin-bottom: 1.5rem;
-  font-style: italic;
-}
-.testimonial-card .quote::before { content: '"'; color: var(--color-primary); margin-right: 4px; }
-.testimonial-card .quote::after  { content: '"'; color: var(--color-primary); margin-left: 4px; }
-.testimonial-card .author { display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
-.testimonial-card .author img {
-  width: 48px; height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--color-primary);
-}
-.testimonial-card .author .avatar {
-  flex-shrink: 0;
-  width: 48px; height: 48px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--fs-sm);
-  font-weight: 700;
-  color: var(--neutral-0);
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-  border: 2px solid rgba(255,255,255,0.15);
-}
-.testimonial-card .author .name { font-weight: 700; }
-.testimonial-card .author .role { font-size: var(--fs-xs); color: var(--text-mid); }
-.testimonial-card .stars { display: inline-flex; gap: 0.15rem; color: var(--color-warning); margin-bottom: 1rem; }
-.testimonial-card .stars svg { width: 18px; height: 18px; fill: currentColor; }
-.testimonial-card .author .avatar {
-  width: 48px; height: 48px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-  color: var(--neutral-0);
-  font-weight: 700;
-  font-size: var(--fs-sm);
-  border: 2px solid var(--color-primary);
-}
-
-.testimonial-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-.testimonial-btn {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  background: var(--surface-1);
-  border: 1px solid rgba(255,255,255,0.08);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-hi);
-  cursor: pointer;
-  transition: all var(--dur-fast) var(--ease-spring);
-}
-.testimonial-btn:hover { background: var(--color-primary); color: var(--neutral-950); border-color: var(--color-primary); transform: scale(1.08); }
-.testimonial-dots {
-  display: flex;
-  gap: 0.5rem;
-}
-.testimonial-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.15);
-  cursor: pointer;
-  transition: all var(--dur-fast);
-}
-.testimonial-dot.active {
-  width: 24px;
-  border-radius: var(--r-pill);
-  background: var(--color-primary);
-  box-shadow: 0 0 8px var(--glow-cyan);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────
-   17b. EDUCATION CARDS (image-on-top layout)
+   17. EDUCATION CARDS (image-on-top layout)
    ───────────────────────────────────────────────────────────────────────── */
 .edu-grid {
   display: grid;
@@ -2547,10 +2440,3 @@ body.pm-locked { overflow: hidden; }
 .workflow-code-body .c-prop{ color: var(--color-primary); }
 .workflow-code-body .c-str { color: var(--color-success); }
 .workflow-code-body .c-arr { color: var(--color-warning); }
-
-
-@media (max-width: 1500px) {
-body{
-    margin-right: -162px;
-}
-}

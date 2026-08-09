@@ -14,7 +14,7 @@
    9. Skill progress bars
    10. Stat counters
    11. Project filter
-   12. Testimonials slider
+   12. Project detail modal
    13. FAQ accordion (CSS-driven)
    14. Contact form (validation + simulation)
    15. Newsletter form
@@ -324,53 +324,7 @@
     applyFilter();
   };
 
-  /* ─── 12. Testimonials slider ──────────────────────────────────────── */
-  const initTestimonials = () => {
-    const track  = $('#testimonial-track');
-    const prev   = $('#slider-prev-btn');
-    const next   = $('#slider-next-btn');
-    const dotsCt = $('#slider-dots');
-    if (!track) return;
-
-    const slides = Array.from(track.children);
-    const total  = slides.length;
-    let index = 0, timer;
-
-    // Build dots
-    if (dotsCt) {
-      dotsCt.innerHTML = '';
-      slides.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'testimonial-dot' + (i === 0 ? ' active' : '');
-        dot.setAttribute('aria-label', `Go to testimonial ${i + 1}`);
-        dot.addEventListener('click', () => go(i, true));
-        dotsCt.appendChild(dot);
-      });
-    }
-
-    const update = () => {
-      track.style.transform = `translateX(-${index * 100}%)`;
-      if (dotsCt) $$('.testimonial-dot', dotsCt).forEach((d, i) => d.classList.toggle('active', i === index));
-    };
-    const go = (i, manual = false) => {
-      index = (i + total) % total;
-      update();
-      if (manual) restart();
-    };
-    const start = () => { timer = setInterval(() => go(index + 1), 5500); };
-    const stop  = () => clearInterval(timer);
-    const restart = () => { stop(); start(); };
-
-    if (prev) prev.addEventListener('click', () => go(index - 1, true));
-    if (next) next.addEventListener('click', () => go(index + 1, true));
-    track.addEventListener('mouseenter', stop);
-    track.addEventListener('mouseleave', start);
-
-    update();
-    start();
-  };
-
-  /* ─── 12b. Project detail modal ────────────────────────────────────── */
+  /* ─── 12. Project detail modal ─────────────────────────────────────── */
   const initProjectModal = () => {
     const modal   = $('#project-modal');
     const dialog  = $('.pm-dialog', modal);
@@ -388,14 +342,17 @@
 
     const buildActions = (links) => {
       actionsEl.innerHTML = '';
-      links.forEach(({ href, label, icon, variant }) => {
+      links.forEach(({ href, label, icon, variant, brand }) => {
         if (!href) return;
         const a = document.createElement('a');
         a.href = href;
         a.target = '_blank';
         a.rel = 'noopener';
         a.className = `pm-btn ${variant === 'primary' ? 'pm-btn-primary' : 'pm-btn-ghost'}`;
-        a.innerHTML = `<i data-lucide="${icon}" aria-hidden="true"></i><span>${label}</span>`;
+        const iconHtml = brand
+          ? `<i class="fa-brands fa-${icon}" aria-hidden="true"></i>`
+          : `<i data-lucide="${icon}" aria-hidden="true"></i>`;
+        a.innerHTML = `${iconHtml}<span>${label}</span>`;
         actionsEl.appendChild(a);
       });
       initLucide();
@@ -430,6 +387,7 @@
 
       buildActions([
         { href: demoHref, label: 'Live Demo', icon: 'external-link', variant: 'primary' },
+        { href: codeHref, label: 'View Code', icon: 'github', variant: 'ghost', brand: true },
       ]);
 
       lastFocused = document.activeElement;
@@ -713,7 +671,6 @@
     initProjectFilter();
     initProjectModal();
     initWorkflow();
-    initTestimonials();
     initFaq();
     initContactForm();
     initNewsletter();
